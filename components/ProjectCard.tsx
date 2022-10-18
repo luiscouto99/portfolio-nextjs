@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-
-import ecommerce from '../public/images/ecommerce.jpg'
 
 import styled from 'styled-components'
 import { Project } from '../types/project';
+
+import ecommerce from '../public/images/ecommerce.jpg';
+import keyboards from '../public/images/keyboards.jpg';
+import pokemon from '../public/images/pokemon.jpg';
 
 const CardContainer = styled.div`
     display: flex;
@@ -68,7 +70,10 @@ const ImageContainer = styled(Image)`
     filter: saturate(0%);
 `;
 
-const ProjectCard = ({ project }: { project: Project }) => {
+
+
+const ProjectCard = ({ project, pageYOffset }: { project: Project, pageYOffset: number }) => {
+
     return (
         <CardContainer>
             <CardInfo>
@@ -78,6 +83,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                     <Description>{project.description}</Description>
                 </ProjectWrapper>
             </CardInfo>
+
 
             <ImageWrapper>
                 <ImageContainer src={project.image} alt="" layout='fill' />

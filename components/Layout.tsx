@@ -17,7 +17,7 @@ const Main = styled.main`
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin: 0 64px;
+  /* margin: 0 64px; */
 `;
 
 const Layout = ({ children } : { children: any}) => {

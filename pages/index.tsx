@@ -1,102 +1,17 @@
+import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 
-import portrait from '../public/images/portrait.jpg'
-
-import styled, { css } from 'styled-components'
-import ProjectCard from '../components/ProjectCard'
-import { projectsDB } from '../projectsDB'
-import { useEffect, useState } from 'react'
-
-const Hero = styled.section`
-  margin: 0 212px;
-  display: flex;
-`;
-
-const HeroInfo = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-type TitleProps = {
-  outline?: boolean;
-}
-const Title = styled.h1<TitleProps>`
-  text-transform: uppercase;
-  font-size: 96px;
-  font-weight: 700;
-  margin: 0;
-  padding-bottom: 192px;
-`;
-
-const TitleSpan = styled.span`
-  color: var(--background-color);
-  text-shadow:
-      1px 1px 0 var(--primary-color), 
-      -1px -1px 0 var(--primary-color), 
-      1px -1px 0 var(--primary-color),
-      -1px 1px 0 var(--primary-color), 
-      1px 1px 0 var(--primary-color);
-`;
-
-const CareerContainer = styled.div``;
-
-const Separator = styled.div`
-  width: 204px;
-  height: 1px;
-  background-color: var(--primary-color);
-`;
-
-const Careers = styled.p`
-  text-transform: uppercase;
-  font-size: 16px;
-`;
-
-const HeroPortrait = styled.div`
-  width: 50%;
-
-  &:nth-child(1)  {
-    width: 100%;
-  }
-`;
-
-const ImageContainer = styled(Image)`
-  width: 100%;
-`;
-
-const Projects = styled.section`
-  margin: 0 212px;
-  padding: 128px 0;
-  display: flex;
-  flex-direction: column;
-  row-gap: 100px;
-`;
-
-const ProjectSeparator = styled.div`
-  width: 100%;
-  height: 1px;
-  opacity: 0.5;
-  background: linear-gradient(to right, var(--background-color), var(--primary-color), var(--background-color));
-`;
+import HeroSection from './Home/components/HeroSection'
+import { useRouter } from 'next/router'
+import ProjectSection from './Home/components/ProjectSection'
 
 const Home: NextPage = () => {
   const [pageYOffset, setPageYOffset] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     window.addEventListener("scroll", () => setPageYOffset(window.pageYOffset));
-
-    // if (pageYOffset < 699) {
-    //   setProject(0)
-    // } else if (pageYOffset < 1289) {
-    //   setProject(1)
-    // } else if (pageYOffset < 1882) {
-    //   setProject(2)
-    // } else {
-    //   setProject(3)
-    // }
 
     return () => {
       window.removeEventListener("scroll", () => setPageYOffset(window.pageYOffset))
@@ -104,6 +19,7 @@ const Home: NextPage = () => {
   }, [pageYOffset]);
 
   console.log(pageYOffset);
+  console.log(router)
 
 
   return (
@@ -114,32 +30,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Hero>
-        <HeroInfo>
-          <Title>Frontend <TitleSpan>Developer</TitleSpan></Title>
-
-          <CareerContainer>
-            <Separator />
-            <Careers>Designer & Front End Developer</Careers>
-          </CareerContainer>
-        </HeroInfo>
-
-        <HeroPortrait>
-          <ImageContainer src={portrait} alt="portrait of myself" layout='responsive' />
-        </HeroPortrait>
-      </Hero>
-
-      <Projects>
-        <ProjectSeparator />
-        {projectsDB.map((project) => {
-          return (
-            <>
-              <ProjectCard key={project.id} project={project} />
-              <ProjectSeparator />
-            </>
-          )
-        })}
-      </Projects>
+      <HeroSection />
+      <ProjectSection pageYOffset={pageYOffset} />
     </>
   )
 }

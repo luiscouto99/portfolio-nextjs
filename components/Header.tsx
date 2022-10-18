@@ -4,7 +4,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 const HeaderContainer = styled.header`
-  margin: 32px 64px;
+  margin: 12px 64px;
   height: 100px;
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@ const NavBar = styled.nav`
   justify-content: space-between;
   font-size: 18px;
   width: 100%;
-  font-weight: 600;
+  font-weight: 400;
 `;
 
 const Logo = styled.div`
