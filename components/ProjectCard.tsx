@@ -67,7 +67,6 @@ const ImageWrapper = styled.div`
 
 const ImageContainer = styled(Image)`
     width: 100%;
-    filter: saturate(0%);
 `;
 
 
