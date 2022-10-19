@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 
 import styled from "styled-components";
@@ -15,7 +15,7 @@ const CardContainer = styled.div`
   cursor: pointer;
 
   &:hover {
-    & div:nth-child(1) {
+    &:nth-child(2) {
       & div:nth-child(2) {
         transition: 0.3s ease-in-out;
         opacity: 1;
@@ -67,7 +67,7 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   width: 816px;
   height: 400px;
   opacity: ${(props) => (props.handleScroll ? 1 : 0)};
-  transition: 0.6s ease-in-out;
+  transition: 0.3s ease-in-out;
 `;
 
 const ImageContainer = styled(Image)`
@@ -77,9 +77,13 @@ const ImageContainer = styled(Image)`
 const ProjectCard = ({
   project,
   pageYOffset,
+  handleMouseEnter,
+  handleMouseLeave,
 }: {
   project: Project;
   pageYOffset: number;
+  handleMouseEnter: () => void;
+  handleMouseLeave: () => void;
 }) => {
   const handleScroll = (minY: number, maxY: number, id: number) =>
     pageYOffset > minY && pageYOffset < maxY && project.id === id
@@ -87,7 +91,7 @@ const ProjectCard = ({
       : false;
 
   return (
-    <CardContainer>
+    <CardContainer onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <CardInfo>
         <Title>{project.name}</Title>
         <ProjectWrapper>
