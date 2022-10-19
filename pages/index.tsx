@@ -3,12 +3,10 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import HeroSection from './Home/components/HeroSection'
-import { useRouter } from 'next/router'
 import ProjectSection from './Home/components/ProjectSection'
 
 const Home: NextPage = () => {
   const [pageYOffset, setPageYOffset] = useState(0);
-  const router = useRouter();
 
   useEffect(() => {
     window.addEventListener("scroll", () => setPageYOffset(window.pageYOffset));
@@ -19,7 +17,6 @@ const Home: NextPage = () => {
   }, [pageYOffset]);
 
   console.log(pageYOffset);
-  console.log(router)
 
 
   return (
