@@ -17,8 +17,7 @@ const Home: NextPage = () => {
     };
   }, [pageYOffset]);
 
-  //console.log(pageYOffset);
-
+  console.log(pageYOffset);
 
   return (
     <>

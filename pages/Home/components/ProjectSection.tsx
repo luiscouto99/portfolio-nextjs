@@ -26,7 +26,8 @@ const SectionTitle = styled.p`
   text-transform: uppercase;
   text-align: center;
   margin: 0;
-  color: white;
+  color: rgba(2, 109, 83);
+  font-weight: 600;
   cursor: pointer;
 `;
 

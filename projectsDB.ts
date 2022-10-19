@@ -7,7 +7,7 @@ export const projectsDB = [
     },
     {
         id: 2,
-        name: 'Pokemon DB - GraphQL',
+        name: 'Pokemon WIKI - GraphQL',
         image: '/images/pokemon.jpg',
         description: 'Test project with calls to a GraphQL based Pokemon API'
     },

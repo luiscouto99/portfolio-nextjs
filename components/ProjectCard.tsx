@@ -7,15 +7,16 @@ import { Project } from "../types/project";
 import ecommerce from "../public/images/ecommerce.jpg";
 import keyboards from "../public/images/keyboards.jpg";
 import pokemon from "../public/images/pokemon.jpg";
+import githubSVG from "../public/images/githubSVG.svg"
 
 const CardContainer = styled.div`
   display: flex;
   position: relative;
   width: 100%;
-  cursor: pointer;
-
+  cursor: url(${githubSVG.src}), auto;
+  
   &:hover {
-    &:nth-child(2) {
+    & div:nth-child(1) {
       & div:nth-child(2) {
         transition: 0.3s ease-in-out;
         opacity: 1;
@@ -47,12 +48,12 @@ const ProjectWrapper = styled.div`
 const Separator = styled.div`
   width: 204px;
   height: 1px;
-  background-color: white;
+  background-color: rgba(2, 109, 83, 0.4);
 `;
 
 const Description = styled.p`
   font-size: 20px;
-  color: white;
+  color: rgba(2, 109, 83, 0.6);
   width: 35%;
   line-height: 1.4;
 `;
@@ -86,7 +87,7 @@ const ProjectCard = ({
   handleMouseLeave: () => void;
 }) => {
   const handleScroll = (minY: number, maxY: number, id: number) =>
-    pageYOffset > minY && pageYOffset < maxY && project.id === id
+    pageYOffset >= minY && pageYOffset < maxY && project.id === id
       ? true
       : false;
 
@@ -100,11 +101,11 @@ const ProjectCard = ({
         </ProjectWrapper>
       </CardInfo>
 
-      <ImageWrapper handleScroll={handleScroll(500, 1099, 1)}>
+      <ImageWrapper handleScroll={handleScroll(145, 999, 1)}>
         <ImageContainer src={ecommerce} alt="" layout="fill" />
       </ImageWrapper>
 
-      <ImageWrapper handleScroll={handleScroll(1100, 1699, 2)}>
+      <ImageWrapper handleScroll={handleScroll(1000, 1699, 2)}>
         <ImageContainer src={pokemon} alt="" layout="fill" />
       </ImageWrapper>
 
