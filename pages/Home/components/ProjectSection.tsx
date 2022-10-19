@@ -33,9 +33,9 @@ const SectionTitle = styled.p`
 
 const ProjectSeparator = styled.div`
   width: 100%;
-  height: 2px;
+  height: 4px;
   opacity: 0.5;
-  background: white;
+  background: var(--secondary-color);
   /* background: linear-gradient(to right, var(--background-color), var(--primary-color), var(--background-color)); */
 `;
 
