@@ -41,6 +41,10 @@ const NavbarItem = styled.li`
     }
 `;
 
+const ItemContent = styled.p`
+    cursor: pointer;
+`;
+
 const Time = styled.p``;
 
 const Header = () => {
@@ -70,8 +74,8 @@ const Header = () => {
                     </NavbarItem>
 
                     <NavbarItem>
-                        <Link href="/projects">Projects</Link>
-                        <Link href="/about">About</Link>
+                        <ItemContent onClick={() => window.scrollTo(0, 835)}>Projects</ItemContent>
+                        <ItemContent>About</ItemContent>
                     </NavbarItem>
                 </NavbarList>
             </NavBar>

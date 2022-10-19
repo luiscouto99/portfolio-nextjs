@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 
 import styled from "styled-components";
 
+const CursorContainer = styled.div`
+`;
 
 type SVGProps = {
   visible: boolean;
@@ -13,8 +15,11 @@ const SVG = styled.svg<SVGProps>`
   pointer-events: none;
   transition-timing-function: ease-out;
   z-index: 2;
-  margin: -26px 0 0 -27px;
+  margin: -26px 0 0 -26px;
   opacity: ${(props) => (props.visible ? 1 : 0)};
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 100%;
+  backdrop-filter: blur(1px);
 
   @keyframes rotation {
     from {
@@ -55,12 +60,11 @@ const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
   }, []);
 
   return (
-    <>
       <SVG
         xmlns="http://www.w3.org/2000/svg"
         xmlLang="en"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 500 500"
+        viewBox="0 0 500 500" 
         id="cursor"
         visible={isVisible}
       >
@@ -72,14 +76,13 @@ const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
             transform="rotate(12,250,250)"
           />
         </defs>
-        <rect width="100%" height="100%" fill="none" />
+      <circle cx="50%" cy="50%" r="205" fill="none" />
         <SVGText>
           <textPath xlinkHref="#textcircle" textLength="900">
             VIEW · WITH · GITHUB ·
           </textPath>
         </SVGText>
       </SVG>
-    </>
   );
 };
 

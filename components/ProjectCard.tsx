@@ -2,14 +2,16 @@ import React from "react";
 import Image from "next/image";
 
 import styled from "styled-components";
-import { Project } from "../types/project";
+import { Project as ProjectType } from "../types/project";
 
 import ecommerce from "../public/images/ecommerce.jpg";
 import keyboards from "../public/images/keyboards.jpg";
 import pokemon from "../public/images/pokemon.jpg";
 import githubSVG from "../public/images/githubSVG.svg"
 
-const CardContainer = styled.div`
+const ProjectAnchor = styled.div``;
+
+const CardAnchor = styled.a`
   display: flex;
   position: relative;
   width: 100%;
@@ -47,15 +49,15 @@ const ProjectWrapper = styled.div`
 
 const Separator = styled.div`
   width: 204px;
-  height: 1px;
+  height: 2px;
   background-color: rgba(2, 109, 83, 0.4);
 `;
 
 const Description = styled.p`
   font-size: 20px;
-  color: rgba(2, 109, 83, 0.6);
   width: 35%;
   line-height: 1.4;
+  color: black;
 `;
 
 type ImageWrapperProps = {
@@ -71,6 +73,15 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   transition: 0.3s ease-in-out;
 `;
 
+const ProjectSeparator = styled.div`
+  width: 100%;
+  height: 4px;
+  opacity: 0.5;
+  background: var(--secondary-color);
+  margin: 110px 0;
+  /* background: linear-gradient(to right, var(--background-color), var(--primary-color), var(--background-color)); */
+`;
+
 const ImageContainer = styled(Image)`
   width: 100%;
 `;
@@ -81,7 +92,7 @@ const ProjectCard = ({
   handleMouseEnter,
   handleMouseLeave,
 }: {
-  project: Project;
+  project: ProjectType;
   pageYOffset: number;
   handleMouseEnter: () => void;
   handleMouseLeave: () => void;
@@ -92,27 +103,30 @@ const ProjectCard = ({
       : false;
 
   return (
-    <CardContainer onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <CardInfo>
-        <Title>{project.name}</Title>
-        <ProjectWrapper>
-          <Separator />
-          <Description>{project.description}</Description>
-        </ProjectWrapper>
-      </CardInfo>
+    <ProjectAnchor>
+      <CardAnchor href={project.link} target='_blank' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <CardInfo>
+          <Title>{project.name}</Title>
+          <ProjectWrapper>
+            <Separator />
+            <Description>{project.description}</Description>
+          </ProjectWrapper>
+        </CardInfo>
 
-      <ImageWrapper handleScroll={handleScroll(145, 999, 1)}>
-        <ImageContainer src={ecommerce} alt="" layout="fill" />
-      </ImageWrapper>
+        <ImageWrapper handleScroll={handleScroll(145, 1099, 1)}>
+          <ImageContainer src={ecommerce} alt="" layout="fill" />
+        </ImageWrapper>
 
-      <ImageWrapper handleScroll={handleScroll(1000, 1699, 2)}>
-        <ImageContainer src={pokemon} alt="" layout="fill" />
-      </ImageWrapper>
+        <ImageWrapper handleScroll={handleScroll(1100, 1699, 2)}>
+          <ImageContainer src={pokemon} alt="" layout="fill" />
+        </ImageWrapper>
 
-      <ImageWrapper handleScroll={handleScroll(1700, 2300, 3)}>
-        <ImageContainer src={keyboards} alt="" layout="fill" />
-      </ImageWrapper>
-    </CardContainer>
+        <ImageWrapper handleScroll={handleScroll(1700, 2299, 3)}>
+          <ImageContainer src={keyboards} alt="" layout="fill" />
+        </ImageWrapper>
+      </CardAnchor>
+      <ProjectSeparator />
+    </ProjectAnchor>
   );
 };
 

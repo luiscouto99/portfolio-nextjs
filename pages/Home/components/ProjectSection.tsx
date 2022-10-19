@@ -9,7 +9,7 @@ import CustomCursor from "../../../components/CustomCursor";
 type ProjectsProps = {
   pageYOffset: number;
 };
-const Projects = styled.section<ProjectsProps>`
+const ProjectsContainer = styled.section<ProjectsProps>`
   margin: ${(props) => (props.pageYOffset > 0 ? "80px 0" : "80px 276px")};
   padding: ${(props) => (props.pageYOffset > 0 ? "48px 276px" : "48px 0")};
   transition: all 0.6s ease-in-out;
@@ -20,7 +20,7 @@ const Projects = styled.section<ProjectsProps>`
   color: var(--secondary-color);
 `;
 
-const ScrollButton = styled.div``;
+const ButtonToScroll = styled.div``;
 
 const SectionTitle = styled.p`
   text-transform: uppercase;
@@ -31,13 +31,7 @@ const SectionTitle = styled.p`
   cursor: pointer;
 `;
 
-const ProjectSeparator = styled.div`
-  width: 100%;
-  height: 4px;
-  opacity: 0.5;
-  background: var(--secondary-color);
-  /* background: linear-gradient(to right, var(--background-color), var(--primary-color), var(--background-color)); */
-`;
+const ProjectContainer = styled.div``;
 
 const ProjectSection = ({ pageYOffset }: { pageYOffset: number }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -46,14 +40,14 @@ const ProjectSection = ({ pageYOffset }: { pageYOffset: number }) => {
   const handleMouseLeave = () => setIsVisible(false);
 
   return (
-    <Projects pageYOffset={pageYOffset}>
-      <ScrollButton onClick={() => window.scrollTo(0, 835)}>
-        <SectionTitle>Selected Works (3)</SectionTitle>
-      </ScrollButton>
+    <ProjectsContainer pageYOffset={pageYOffset}>
       <CustomCursor isVisible={isVisible} />
-      {projectsDB.map((project) => {
-        return (
-          <>
+      <ButtonToScroll onClick={() => window.scrollTo(0, 835)}>
+        <SectionTitle>Selected Works (3)</SectionTitle>
+      </ButtonToScroll>
+      <ProjectContainer>
+        {projectsDB.map((project) => {
+          return (
             <ProjectCard
               key={project.id}
               project={project}
@@ -61,11 +55,10 @@ const ProjectSection = ({ pageYOffset }: { pageYOffset: number }) => {
               handleMouseEnter={handleMouseEnter}
               handleMouseLeave={handleMouseLeave}
             />
-            <ProjectSeparator />
-          </>
-        );
-      })}
-    </Projects>
+          );
+        })}
+      </ProjectContainer>
+    </ProjectsContainer>
   );
 };
 
