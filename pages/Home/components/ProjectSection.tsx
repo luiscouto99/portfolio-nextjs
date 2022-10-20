@@ -33,6 +33,7 @@ const ProjectsContainer = styled.section<ProjectsProps>`
     & > div:last-child {
       & > div:last-child {
         background-color: transparent;
+        margin-bottom: 10px;
       }
     }
   }
@@ -47,6 +48,7 @@ const SectionTitle = styled.p`
   color: var(--primary-color);
   font-weight: 600;
   cursor: pointer;
+  padding: 12px;
 `;
 
 const ProjectContainer = styled.div`

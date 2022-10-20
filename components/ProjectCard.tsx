@@ -55,7 +55,7 @@ const Separator = styled.div`
 
 const Description = styled.p`
   font-size: 20px;
-  width: 35%;
+  width: 30%;
   line-height: 1.4;
   color: white;
 `;
@@ -72,15 +72,6 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   opacity: ${(props) => (props.handleScroll ? 1 : 0)};
   transition: 0.3s ease-in-out;
 `;
-
-// const ProjectSeparator = styled.div`
-//   width: 100%;
-//   height: 4px;
-//   opacity: 0.5;
-//   background: var(--secondary-color);
-//   margin: 110px 0;
-//   /* background: linear-gradient(to right, var(--background-color), var(--primary-color), var(--background-color)); */
-// `;
 
 const ImageContainer = styled(Image)`
   width: 100%;
@@ -125,7 +116,6 @@ const ProjectCard = ({
           <ImageContainer src={keyboards} alt="" layout="fill" />
         </ImageWrapper>
       </CardAnchor>
-      {/* <ProjectSeparator /> */}
     </ProjectAnchor>
   );
 };

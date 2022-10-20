@@ -34,7 +34,7 @@ const SVG = styled.svg<SVGProps>`
 const SVGText = styled.text`
   font-size: 48px;
   font-weight: bold;
-  fill: var(--background-color);
+  fill: white;
 `;
 
 const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
