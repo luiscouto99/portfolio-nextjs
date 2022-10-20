@@ -14,7 +14,7 @@ const SVG = styled.svg<SVGProps>`
   animation: rotation 8s infinite linear;
   pointer-events: none;
   transition-timing-function: ease-out;
-  z-index: 2;
+  z-index: 3;
   margin: -26px 0 0 -26px;
   opacity: ${(props) => (props.visible ? 1 : 0)};
   transition: opacity 0.3s ease-in-out;
