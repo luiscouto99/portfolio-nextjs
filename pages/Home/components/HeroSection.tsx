@@ -1,9 +1,9 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 
-import portrait from '../../../public/images/portrait.jpg'
+import portrait from "../../../public/images/portrait.jpg";
 
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Hero = styled.section`
   margin: 0 276px;
@@ -19,7 +19,7 @@ const HeroInfo = styled.div`
 
 type TitleProps = {
   outline?: boolean;
-}
+};
 const Title = styled.h1<TitleProps>`
   text-transform: uppercase;
   font-size: 96px;
@@ -30,12 +30,9 @@ const Title = styled.h1<TitleProps>`
 
 const TitleSpan = styled.span`
   color: var(--background-color);
-  text-shadow:
-      1px 1px 0 var(--primary-color), 
-      -1px -1px 0 var(--primary-color), 
-      1px -1px 0 var(--primary-color),
-      -1px 1px 0 var(--primary-color), 
-      1px 1px 0 var(--primary-color);
+  text-shadow: 1px 1px 0 var(--primary-color), -1px -1px 0 var(--primary-color),
+    1px -1px 0 var(--primary-color), -1px 1px 0 var(--primary-color),
+    1px 1px 0 var(--primary-color);
 `;
 
 const CareerContainer = styled.div``;
@@ -54,7 +51,7 @@ const Careers = styled.p`
 const HeroPortrait = styled.div`
   width: 50%;
 
-  &:nth-child(1)  {
+  &:nth-child(1) {
     width: 100%;
   }
 `;
@@ -66,20 +63,26 @@ const ImageContainer = styled(Image)`
 const HeroSection = () => {
   return (
     <Hero>
-        <HeroInfo>
-          <Title>Frontend <TitleSpan>Developer</TitleSpan></Title>
+      <HeroInfo>
+        <Title>
+          Frontend <TitleSpan>Developer</TitleSpan>
+        </Title>
 
-          <CareerContainer>
-            <Separator />
-            <Careers>Designer & Front End Developer</Careers>
-          </CareerContainer>
-        </HeroInfo>
+        <CareerContainer>
+          <Separator />
+          <Careers>Designer & Front End Developer</Careers>
+        </CareerContainer>
+      </HeroInfo>
 
-        <HeroPortrait>
-          <ImageContainer src={portrait} alt="portrait of myself" layout='responsive' />
-        </HeroPortrait>
-      </Hero>
-  )
-}
+      <HeroPortrait>
+        <ImageContainer
+          src={portrait}
+          alt="portrait of myself"
+          layout="responsive"
+        />
+      </HeroPortrait>
+    </Hero>
+  );
+};
 
-export default HeroSection
+export default HeroSection;
