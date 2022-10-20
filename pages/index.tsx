@@ -20,8 +20,6 @@ const Home: NextPage = () => {
     };
   }, [pageYOffset]);
 
-  console.log(pageYOffset)
-
   return (
     <>
       <Head>

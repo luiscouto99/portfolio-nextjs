@@ -32,12 +32,26 @@ const NavbarList = styled.ul`
   align-items: center;
   justify-content: space-between;
   padding-left: 0;
+
+  @media (max-width: 1380px) {
+    width: auto;
+  }
 `;
 
 const NavbarItem = styled.li`
   &:nth-of-type(2) {
     display: flex;
     gap: 156px;
+  }
+
+  @media (max-width: 1380px) {
+    &:nth-of-type(1) {
+      display: none;
+    }
+
+    &:nth-of-type(2) {
+      justify-content: flex-end;
+    }
   }
 `;
 
@@ -107,7 +121,9 @@ const Header = () => {
               </ItemContent>
             </ItemWrapper>
             <ItemWrapper>
-              <ItemContent onClick={() => window.scrollTo(0, 3000)}>About</ItemContent>
+              <ItemContent onClick={() => window.scrollTo(0, 3000)}>
+                About
+              </ItemContent>
             </ItemWrapper>
           </NavbarItem>
         </NavbarList>

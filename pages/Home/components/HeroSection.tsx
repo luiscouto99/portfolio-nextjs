@@ -8,6 +8,14 @@ import styled from "styled-components";
 const Hero = styled.section`
   margin: 0 276px;
   display: flex;
+
+  @media (max-width: 1680px) {
+    margin: 0 64px;
+  }
+
+  @media (max-width: 820px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const HeroInfo = styled.div`
@@ -15,6 +23,11 @@ const HeroInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    align-items: center;
+  }
 `;
 
 type TitleProps = {
@@ -26,6 +39,34 @@ const Title = styled.h1<TitleProps>`
   font-weight: 700;
   margin: 0;
   padding-bottom: 128px;
+
+  @media (max-width: 1840px) {
+    font-size: 80px;
+  }
+
+  @media (max-width: 1380px) {
+    font-size: 64px;
+  }
+
+  @media (max-width: 1180px) {
+    font-size: 56px;
+  }
+
+  @media (max-width: 1080px) {
+     padding-bottom: 64px; 
+  }
+
+  @media (max-width: 980px) {
+    font-size: 48px;
+  }
+
+  @media (max-width: 754px) {
+    font-size: 36px;
+  }
+
+  @media (max-width: 602px) {
+    font-size: 27px;
+  }
 `;
 
 const TitleSpan = styled.span`
@@ -35,7 +76,14 @@ const TitleSpan = styled.span`
     1px 1px 0 var(--primary-color);
 `;
 
-const CareerContainer = styled.div``;
+const CareerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 820px) {
+    align-items: center;
+  }
+`;
 
 const Separator = styled.div`
   width: 204px;
@@ -53,6 +101,12 @@ const HeroPortrait = styled.div`
 
   &:nth-child(1) {
     width: 100%;
+  }
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
   }
 `;
 
