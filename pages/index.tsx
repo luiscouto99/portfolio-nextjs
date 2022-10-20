@@ -5,6 +5,7 @@ import Head from 'next/head'
 import HeroSection from './Home/components/HeroSection'
 import ProjectSection from './Home/components/ProjectSection'
 import CustomCursor from '../components/CustomCursor'
+import AboutSection from './Home/components/AboutSection'
 
 const Home: NextPage = () => {
   const [pageYOffset, setPageYOffset] = useState(0);
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
       </Head>
       <HeroSection />
       <ProjectSection pageYOffset={pageYOffset} />
+      <AboutSection pageYOffset={pageYOffset} />
     </>
   )
 }

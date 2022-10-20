@@ -107,7 +107,7 @@ const Header = () => {
               </ItemContent>
             </ItemWrapper>
             <ItemWrapper>
-              <ItemContent>About</ItemContent>
+              <ItemContent onClick={() => window.scrollTo(0, 3000)}>About</ItemContent>
             </ItemWrapper>
           </NavbarItem>
         </NavbarList>

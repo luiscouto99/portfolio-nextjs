@@ -11,8 +11,8 @@ type ProjectsProps = {
   pageYOffset: number;
 };
 const ProjectsContainer = styled.section<ProjectsProps>`
-  margin: ${(props) => (props.pageYOffset > 0 ? "80px 64px" : "80px 276px")};
-  padding: ${(props) => (props.pageYOffset > 0 ? "48px 276px" : "48px 0")};
+  margin: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 2500 ? "80px 64px" : "80px 276px")};
+  padding: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 2500 ? "48px 276px" : "48px 0")};
   display: flex;
   flex-direction: column;
   row-gap: 100px;
@@ -22,12 +22,10 @@ const ProjectsContainer = styled.section<ProjectsProps>`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%); */
   background-color: rgba(3, 30, 25, 0.75);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
-  transition: all 0.6s ease-in-out;
+  transition: all 1s ease-in-out;
 
   & > div:last-child {
     & > div:last-child {
@@ -39,16 +37,38 @@ const ProjectsContainer = styled.section<ProjectsProps>`
   }
 `;
 
-const ButtonToScroll = styled.div``;
+const ButtonToScroll = styled.div`
+  position: relative;
+  margin: 0 auto;
+`;
 
 const SectionTitle = styled.p`
-  text-transform: uppercase;
-  text-align: center;
   margin: 0;
+  text-transform: uppercase;
   color: var(--primary-color);
   font-weight: 600;
+  padding: 12px 0;
   cursor: pointer;
-  padding: 12px;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 4px;
+    left: 0;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    &:after {
+      transform-origin: bottom left;
+      transform: scaleX(1);
+    }
+  }
 `;
 
 const ProjectContainer = styled.div`
@@ -62,7 +82,6 @@ const ProjectSeparator = styled.div`
   opacity: 0.5;
   background: var(--secondary-color);
   margin: 110px 0;
-  /* background: linear-gradient(to right, var(--background-color), var(--primary-color), var(--background-color)); */
 `;
 
 const ProjectWrapper = styled.div``;

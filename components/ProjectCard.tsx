@@ -20,7 +20,7 @@ const CardAnchor = styled.a`
   &:hover {
     & div:nth-child(1) {
       & div:nth-child(2) {
-        transition: 0.3s ease-in-out;
+        transition: 0.6s ease-in-out;
         opacity: 1;
       }
     }
@@ -70,7 +70,7 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   width: 816px;
   height: 400px;
   opacity: ${(props) => (props.handleScroll ? 1 : 0)};
-  transition: 0.3s ease-in-out;
+  transition: 0.6s ease-in-out;
 `;
 
 const ImageContainer = styled(Image)`
@@ -112,7 +112,7 @@ const ProjectCard = ({
           <ImageContainer src={pokemon} alt="" layout="fill" />
         </ImageWrapper>
 
-        <ImageWrapper handleScroll={handleScroll(1700, 2299, 3)}>
+        <ImageWrapper handleScroll={handleScroll(1700, 2500, 3)}>
           <ImageContainer src={keyboards} alt="" layout="fill" />
         </ImageWrapper>
       </CardAnchor>

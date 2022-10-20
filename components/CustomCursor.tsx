@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 import styled from "styled-components";
-
-const CursorContainer = styled.div`
-`;
 
 type SVGProps = {
   visible: boolean;
@@ -38,9 +35,9 @@ const SVGText = styled.text`
 `;
 
 const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
-  useEffect(() => {
-    const cursor = document.getElementById("cursor");
+  const cursor = useRef(null as any);
 
+  useEffect(() => {
     const trackCursor = (event: any) => {
       const x = event.pageX;
       const y = event.pageY;
@@ -52,37 +49,37 @@ const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
         window.pageXOffset !== undefined
           ? window.pageXOffset
           : document.body.scrollLeft;
-      cursor.style.left = x - scrollLeft + "px";
-      cursor.style.top = y - scrollTop + "px";
+      cursor.current.style.left = x - scrollLeft + "px";
+      cursor.current.style.top = y - scrollTop + "px";
     };
 
     document.addEventListener("mousemove", trackCursor);
   }, []);
 
   return (
-      <SVG
-        xmlns="http://www.w3.org/2000/svg"
-        xmlLang="en"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 500 500" 
-        id="cursor"
-        visible={isVisible}
-      >
-        <defs>
-          <path
-            id="textcircle"
-            d="M250,400
+    <SVG
+      xmlns="http://www.w3.org/2000/svg"
+      xmlLang="en"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 500 500"
+      ref={cursor}
+      visible={isVisible}
+    >
+      <defs>
+        <path
+          id="textcircle"
+          d="M250,400
                     a150,150 0 0,1 0,-300a150,150 0 0,1 0,300Z"
-            transform="rotate(12,250,250)"
-          />
-        </defs>
+          transform="rotate(12,250,250)"
+        />
+      </defs>
       <circle cx="50%" cy="50%" r="205" fill="none" />
-        <SVGText>
-          <textPath xlinkHref="#textcircle" textLength="900">
-            VIEW · WITH · GITHUB ·
-          </textPath>
-        </SVGText>
-      </SVG>
+      <SVGText>
+        <textPath xlinkHref="#textcircle" textLength="900">
+          VIEW · WITH · GITHUB ·
+        </textPath>
+      </SVGText>
+    </SVG>
   );
 };
 
