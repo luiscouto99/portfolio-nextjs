@@ -12,7 +12,7 @@ type ProjectsProps = {
 };
 const ProjectsContainer = styled.section<ProjectsProps>`
   margin: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 2500 ? "80px 64px" : "80px 276px")};
-  padding: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 2500 ? "48px 276px" : "48px 0")};
+  padding: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 2500 ? "48px 212px" : "48px 0")};
   display: flex;
   flex-direction: column;
   row-gap: 100px;
@@ -34,6 +34,11 @@ const ProjectsContainer = styled.section<ProjectsProps>`
         margin-bottom: 10px;
       }
     }
+  }
+
+  @media (max-width: 1410px) {
+    margin: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 3300 ? "80px 64px" : "80px 276px")};
+    padding: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 3300 ? "48px 212px" : "48px 0")};
   }
 `;
 
@@ -76,15 +81,19 @@ const ProjectContainer = styled.div`
   z-index: 2;
 `;
 
+const ProjectWrapper = styled.div``;
+
 const ProjectSeparator = styled.div`
   width: 100%;
   height: 4px;
   opacity: 0.5;
   background: var(--secondary-color);
   margin: 110px 0;
-`;
 
-const ProjectWrapper = styled.div``;
+  @media (max-width: 1410px) {
+    margin: 80px 0;
+  }
+`;
 
 const ProjectSection = ({ pageYOffset }: { pageYOffset: number }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -95,7 +104,7 @@ const ProjectSection = ({ pageYOffset }: { pageYOffset: number }) => {
   return (
     <ProjectsContainer pageYOffset={pageYOffset}>
       <CustomCursor isVisible={isVisible} />
-      <ButtonToScroll onClick={() => window.scrollTo(0, 835)}>
+      <ButtonToScroll onClick={() => window.scrollTo(0, window.innerWidth > 1410 ? 835 : 791)}>
         <SectionTitle>Selected Works (3)</SectionTitle>
       </ButtonToScroll>
       <ProjectContainer>

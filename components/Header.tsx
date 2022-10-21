@@ -116,7 +116,7 @@ const Header = () => {
 
           <NavbarItem>
             <ItemWrapper>
-              <ItemContent onClick={() => window.scrollTo(0, 835)}>
+              <ItemContent onClick={() => window.scrollTo(0, window.innerWidth > 1410 ? 835 : 791)}>
                 Projects
               </ItemContent>
             </ItemWrapper>
