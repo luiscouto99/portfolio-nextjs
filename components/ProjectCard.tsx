@@ -67,7 +67,11 @@ const Title = styled.h2`
   }
 
   @media (max-width: 1080px) {
-    text-align: center
+    text-align: center;
+  }
+
+  @media (max-width: 862px) {
+    font-size: 24px;
   }
 `;
 
@@ -75,6 +79,10 @@ const DescriptionWrapper = styled.div`
   opacity: 0;
   transition: 0.3s ease-in-out;
   margin-top: 32px;
+
+  @media (max-width: 1080px) {
+    opacity: 1;
+  }
 `;
 
 const Separator = styled.div`
@@ -116,7 +124,7 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   right: 0;
   z-index: 0;
   width: 816px;
-  height: auto;
+  height: 400px;
   opacity: ${(props) => (props.handleScroll || props.handleScroll === undefined ? 1 : 0)};
   transition: 0.6s ease-in-out;
 
@@ -135,7 +143,6 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
 
   @media (max-width: 1410px) {
     position: relative;
-    height: auto;
     width: 100%;
     height: 400px;
     transition: 0.6s ease-in-out;
@@ -158,8 +165,8 @@ const ProjectCard = ({
   pageYOffset: number;
   handleMouseEnter: () => void;
   handleMouseLeave: () => void;
-  }) => {
-  const [screenWidth, setScreenWidth] = useState(0);
+}) => {
+  const [screenWidth, setScreenWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1920);
 
   useEffect(() => {
     window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
@@ -205,12 +212,12 @@ const ProjectCard = ({
               </ImageWrapper>
             </>
           ) : (
-              <ImageWrapper>
-                {screenWidth > 1080 ? (
-                  <ImageContainer src={project.image} alt="" layout='fill' />
-                ): (
-                  <ImageContainer src={project.mobileImage} alt="" layout='fill' />
-                )}
+            <ImageWrapper>
+              {screenWidth > 1080 ? (
+                <ImageContainer src={project.image} alt="" layout='fill' />
+              ) : (
+                <ImageContainer src={project.mobileImage} alt="" layout='fill' />
+              )}
             </ImageWrapper>
           )
         }

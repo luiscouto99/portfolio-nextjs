@@ -37,8 +37,22 @@ const ProjectsContainer = styled.section<ProjectsProps>`
   }
 
   @media (max-width: 1410px) {
-    margin: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 3300 ? "80px 64px" : "80px 276px")};
+    margin: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 3300 ? "80px 64px" : "80px 212px")};
     padding: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 3300 ? "48px 212px" : "48px 0")};
+  }
+
+  @media (max-width: 1080px) {
+    margin: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 3300 ? "80px 64px" : "80px 128px")};
+    padding: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 3300 ? "48px 128px" : "48px 0")};
+  }
+
+  @media (max-width: 668px) {
+    padding: ${(props) => (props.pageYOffset > 0 && props.pageYOffset < 3300 ? "48px 20px" : "48px 0")};
+  }
+
+  @media (max-width: 500px) {
+    margin: 80px 64px;
+    padding: 48px 20px;
   }
 `;
 
