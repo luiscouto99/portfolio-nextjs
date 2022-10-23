@@ -35,7 +35,7 @@ const SVGText = styled.text`
 `;
 
 const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
-  const cursor = useRef<HTMLElement>();
+  const cursor = useRef<SVGSVGElement>(null as any);
 
   useEffect(() => {
     const trackCursor = (event: any) => {
@@ -49,10 +49,8 @@ const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
         window.pageXOffset !== undefined
           ? window.pageXOffset
           : document.body.scrollLeft;
-      if (cursor !== undefined) {
-        cursor.current.style.left = x - scrollLeft + "px";
-        cursor.current.style.top = y - scrollTop + "px";
-      }
+      cursor.current.style.left = x - scrollLeft + "px";
+      cursor.current.style.top = y - scrollTop + "px";
     };
 
     document.addEventListener("mousemove", trackCursor);
