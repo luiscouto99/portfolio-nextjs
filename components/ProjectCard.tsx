@@ -8,6 +8,7 @@ import ecommerce from "../public/images/ecommerce.jpg";
 import keyboards from "../public/images/keyboards.jpg";
 import pokemon from "../public/images/pokemon.jpg";
 import githubSVG from "../public/images/githubSVG.svg"
+import { useWindowWidth } from "../hooks/useWindowWidth";
 
 const ProjectAnchor = styled.div``;
 
@@ -166,19 +167,8 @@ const ProjectCard = ({
   handleMouseEnter: () => void;
   handleMouseLeave: () => void;
 }) => {
-  const [screenWidth, setScreenWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1920);
-
-  useEffect(() => {
-    window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
-
-    return () => {
-      window.removeEventListener("scroll", () =>
-        setScreenWidth(window.innerWidth)
-      );
-    };
-  }, [screenWidth]);
-
-  console.log("screenWidth", screenWidth)
+  const screenWidth = useWindowWidth();
+  console.log("screenWidth", screenWidth);
 
   const handleScroll = (minY: number, maxY: number, id: number) =>
     pageYOffset >= minY && pageYOffset < maxY && project.id === id

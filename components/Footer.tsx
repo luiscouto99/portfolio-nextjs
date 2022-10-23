@@ -13,6 +13,10 @@ const FooterContainer = styled.footer`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const SocialsContainer = styled.div`
@@ -37,6 +41,10 @@ const InfoContainer = styled.div`
 
 const InfoText = styled.p`
   font-size: 18px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const Footer = () => {

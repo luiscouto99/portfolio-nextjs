@@ -42,6 +42,14 @@ const NavbarItem = styled.li`
   &:nth-of-type(2) {
     display: flex;
     gap: 156px;
+
+    @media (max-width: 768px) {
+      gap: 60px;
+    }
+
+    @media (max-width: 600px) {
+      gap: 20px;
+    }
   }
 
   @media (max-width: 1380px) {

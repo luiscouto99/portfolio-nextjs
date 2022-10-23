@@ -5,10 +5,20 @@ import Link from "next/link";
 import styled from "styled-components";
 
 import illustration from "../../../public/images/illustration.jpg";
+import illustrationM from "../../../public/images/illustrationM.jpg";
+import { useWindowWidth } from "../../../hooks/useWindowWidth";
 
 const AboutContainer = styled.section`
   margin: 160px 276px;
   z-index: 0;
+
+  @media (max-width: 1410px) {
+    margin: 160px 212px;
+  }
+
+  @media (max-width: 1080px) {
+    margin: 80px 64px 160px;
+  }
 `;
 
 type GreetingProps = {
@@ -20,6 +30,19 @@ const Greeting = styled.p<GreetingProps>`
   transition: 1s ease-in-out;
   margin-bottom: 80px;
   color: rgba(102, 217, 155, 0.4);
+  text-align: center;
+
+  @media (max-width: 1609px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 868px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 517px) {
+    font-size: 16px;
+  }
 `;
 
 const Description = styled.div``;
@@ -33,6 +56,38 @@ const DescriptionLine = styled.h2<DescriptionLineProps>`
   text-align: center;
   opacity: ${(props) => (props.handleScroll ? 1 : 0)};
   transition: 1s ease-in-out;
+
+  @media (max-width: 1906px) {
+    font-size: 64px;
+  }
+
+  @media (max-width: 1757px) {
+    font-size: 56px;
+  }
+
+  @media (max-width: 1609px) {
+    font-size: 48px;
+  }
+
+  @media (max-width: 1460px) {
+    font-size: 40px;
+  }
+
+  @media (max-width: 1184px) {
+    font-size: 32px;
+  }
+
+   @media (max-width: 739px) {
+    font-size: 24px;
+  }
+
+  @media (max-width: 591px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 517px) {
+    font-size: 18px;
+  }
 `;
 
 const DescriptionSpan = styled.span`
@@ -55,6 +110,10 @@ const GetToKnowMe = styled.div`
     justify-content: flex-end;
     z-index: 3;
   }
+
+  @media (max-width: 1480px) {
+    margin: 160px 0;
+  }
 `;
 
 const Title = styled.h2`
@@ -62,6 +121,23 @@ const Title = styled.h2`
   font-size: 80px;
   font-weight: 600;
   margin: 100px 0;
+  transition: 1s ease-in-out;
+
+  @media (max-width: 1580px) {
+    font-size: 72px;
+  }
+
+  @media (max-width: 1380px) {
+    font-size: 64px;
+  }
+
+  @media (max-width: 1280px) {
+    font-size: 56px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 type ImageWrapperProps = {
@@ -92,16 +168,35 @@ const EmailContainer = styled.div`
   justify-content: center;
   margin: 240px 0;
 
+  @media (max-width: 680px) {
+    margin: 80px 0;
+  }
+
+
   a {
     font-size: 80px;
     font-weight: 400;
     padding-bottom: 4px;
     border-bottom: 4px solid var(--primary-color);
+    transition: 1s ease-in-out;
+
+    @media (max-width: 1280px) {
+      font-size: 64px;
+    }
+
+    @media (max-width: 1280px) {
+      font-size: 48px;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 34px;
+    }
   }
 `;
 
 const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
   const handleScroll = (minY: number) => (pageYOffset >= minY ? true : false);
+  const screenWidth = useWindowWidth();
 
   return (
     <AboutContainer>
@@ -130,7 +225,7 @@ const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
           pageYOffset={pageYOffset}
           handleScroll={handleScroll(3000)}
         >
-          <Image src={illustration} alt="illustration of myself" />
+          {screenWidth > 920 ? (<Image src={illustration} alt="illustration of myself" />) : (<Image src={illustrationM} alt="illustration of myself" />)}
         </ImageWrapper>
         <Title>
           — and reach <br /> out to me!
