@@ -172,7 +172,6 @@ const ProjectCard = ({
   handleMouseLeave: () => void;
 }) => {
   const screenWidth = useWindowWidth();
-  console.log("screenWidth", screenWidth);
 
   const handleScroll = (minY: number, maxY: number, id: number) =>
     pageYOffset >= minY && pageYOffset < maxY && project.id === id

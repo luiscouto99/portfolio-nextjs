@@ -128,7 +128,8 @@ const Title = styled.h2`
   display: inline-flex;
   font-size: 80px;
   font-weight: 600;
-  margin: 100px 0;
+  margin: 0;
+  padding: 100px 0;
   transition: 1s ease-in-out;
 
   @media (max-width: 1580px) {
@@ -143,8 +144,13 @@ const Title = styled.h2`
     font-size: 56px;
   }
 
+  @media (max-width: 800px) {
+    padding: 120px 0;
+  }
+
   @media (max-width: 768px) {
     font-size: 32px;
+    padding: 150px 0;
   }
 `;
 
@@ -156,16 +162,9 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   position: absolute;
   top: ${[
     (props) =>
-      props.pageYOffset > 3000
-        ? `calc(100% - (${pageYOffset + "px"}*0.1))`
-        : "90%",
+      props.pageYOffset >= 2730 ? '375px' : "90%",
   ]};
-  transition: ${[
-    (props) =>
-      props.pageYOffset >= 3000 && props.pageYOffset <= 3500
-        ? "1s ease-in-out"
-        : "0.3s ease-in-out",
-  ]};
+  transition: 1s ease-in-out;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -235,13 +234,15 @@ const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
         </Title>
         <ImageWrapper
           pageYOffset={pageYOffset}
-          handleScroll={handleScroll(3000)}
+          handleScroll={handleScroll(screenWidth > 768 ? 3000 : 2600)}
         >
-          {screenWidth > 920 ? (
+          {/* {screenWidth > 920 ? (
             <Image src={illustration} alt="illustration of myself" />
           ) : (
             <Image src={illustrationM} alt="illustration of myself" />
-          )}
+          )} */}
+            <Image src={illustrationM} alt="illustration of myself" />
+
         </ImageWrapper>
         <Title>
           — and reach <br /> out to me!
