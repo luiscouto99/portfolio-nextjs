@@ -35,7 +35,7 @@ const SVGText = styled.text`
 `;
 
 const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
-  const cursor = useRef(null);
+  const cursor = useRef(null as any);
 
   useEffect(() => {
     const trackCursor = (event: any) => {
