@@ -19,6 +19,10 @@ const AboutContainer = styled.section`
   @media (max-width: 1080px) {
     margin: 80px 64px 160px;
   }
+
+  @media (max-width: 768px) {
+    margin: 40px 20px;
+  }
 `;
 
 type GreetingProps = {
@@ -113,6 +117,10 @@ const GetToKnowMe = styled.div`
 
   @media (max-width: 1480px) {
     margin: 160px 0;
+  }
+
+  @media (max-width: 768px) {
+    margin: 40px;
   }
 `;
 

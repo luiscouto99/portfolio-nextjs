@@ -6,6 +6,7 @@ import { projectsDB } from "../../../projectsDB";
 import styled from "styled-components";
 import CustomCursor from "../../../components/CustomCursor";
 import blur from "../../../public/images/blur.svg";
+import { useWindowWidth } from "../../../hooks/useWindowWidth";
 
 type ProjectsProps = {
   pageYOffset: number;
@@ -51,7 +52,7 @@ const ProjectsContainer = styled.section<ProjectsProps>`
   }
 
   @media (max-width: 500px) {
-    margin: 80px 64px;
+    margin: 80px 20px;
     padding: 48px 20px;
   }
 `;
@@ -107,17 +108,24 @@ const ProjectSeparator = styled.div`
   @media (max-width: 1410px) {
     margin: 80px 0;
   }
+
+  @media (max-width: 1410px) {
+    margin: 40px 0;
+  }
 `;
 
 const ProjectSection = ({ pageYOffset }: { pageYOffset: number }) => {
   const [isVisible, setIsVisible] = useState(false);
+
+  const screenWidth = useWindowWidth();
 
   const handleMouseEnter = () => setIsVisible(true);
   const handleMouseLeave = () => setIsVisible(false);
 
   return (
     <ProjectsContainer pageYOffset={pageYOffset}>
-      <CustomCursor isVisible={isVisible} />
+      {screenWidth > 768 && <CustomCursor isVisible={isVisible} />}
+      
       <ButtonToScroll onClick={() => window.scrollTo(0, window.innerWidth > 1410 ? 835 : 791)}>
         <SectionTitle>Selected Works (3)</SectionTitle>
       </ButtonToScroll>

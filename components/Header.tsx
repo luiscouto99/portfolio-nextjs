@@ -8,6 +8,10 @@ const HeaderContainer = styled.header`
   height: 100px;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    margin: 12px 20px;
+  }
 `;
 
 const NavBar = styled.nav`

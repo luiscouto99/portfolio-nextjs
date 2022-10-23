@@ -16,6 +16,10 @@ const Hero = styled.section`
   @media (max-width: 820px) {
     flex-direction: column-reverse;
   }
+
+  @media (max-width: 768px) {
+    margin: 0 20px;
+  }
 `;
 
 const HeroInfo = styled.div`
@@ -59,6 +63,10 @@ const Title = styled.h1<TitleProps>`
     font-size: 48px;
   }
 
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+
   @media (max-width: 754px) {
     font-size: 36px;
   }
@@ -93,6 +101,10 @@ const Separator = styled.div`
 const Careers = styled.p`
   text-transform: uppercase;
   font-size: 16px;
+
+  @media (max-width: 366px) {
+    font-size: 14px;
+  }
 `;
 
 const HeroPortrait = styled.div`

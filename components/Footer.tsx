@@ -17,6 +17,10 @@ const FooterContainer = styled.footer`
   @media (max-width: 768px) {
     flex-direction: column;
   }
+
+  @media (max-width: 768px) {
+    margin: 12px 20px;
+  }
 `;
 
 const SocialsContainer = styled.div`

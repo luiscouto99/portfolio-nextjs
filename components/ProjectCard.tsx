@@ -115,6 +115,10 @@ const Description = styled.p`
     width: 100%;
     text-align: center;
   }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 type ImageWrapperProps = {
