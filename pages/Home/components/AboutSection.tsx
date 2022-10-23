@@ -156,7 +156,7 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   position: absolute;
   top: ${[
     (props) =>
-      props.pageYOffset > 3100
+      props.pageYOffset > 3000
         ? `calc(100% - (${pageYOffset + "px"}*0.1))`
         : "90%",
   ]};
@@ -199,6 +199,10 @@ const EmailContainer = styled.div`
     @media (max-width: 680px) {
       font-size: 34px;
     }
+
+    @media (max-width: 500px) {
+      font-size: 26px;
+    }
   }
 `;
 
@@ -233,7 +237,11 @@ const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
           pageYOffset={pageYOffset}
           handleScroll={handleScroll(3000)}
         >
-          {screenWidth > 920 ? (<Image src={illustration} alt="illustration of myself" />) : (<Image src={illustrationM} alt="illustration of myself" />)}
+          {screenWidth > 920 ? (
+            <Image src={illustration} alt="illustration of myself" />
+          ) : (
+            <Image src={illustrationM} alt="illustration of myself" />
+          )}
         </ImageWrapper>
         <Title>
           — and reach <br /> out to me!
