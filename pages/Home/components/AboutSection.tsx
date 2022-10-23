@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import styled from "styled-components";
 
-import illustration from "../../../public/images/illustration.jpg";
 import illustrationM from "../../../public/images/illustrationM.jpg";
 import { useWindowWidth } from "../../../hooks/useWindowWidth";
 
@@ -236,12 +235,7 @@ const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
           pageYOffset={pageYOffset}
           handleScroll={handleScroll(screenWidth > 768 ? 3000 : 2600)}
         >
-          {/* {screenWidth > 920 ? (
-            <Image src={illustration} alt="illustration of myself" />
-          ) : (
-            <Image src={illustrationM} alt="illustration of myself" />
-          )} */}
-            <Image src={illustrationM} alt="illustration of myself" />
+          <Image src={illustrationM} alt="illustration of myself" />
 
         </ImageWrapper>
         <Title>
