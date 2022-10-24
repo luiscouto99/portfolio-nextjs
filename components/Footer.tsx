@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import github from "../public/images/github.png";
 import linkedin from "../public/images/linkedin.png";
+import cv from "../public/images/cv.png";
 
 const FooterContainer = styled.footer`
   margin: 12px 64px;
@@ -13,7 +14,7 @@ const FooterContainer = styled.footer`
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: 768px) {
+  @media (max-width: 940px) {
     flex-direction: column;
   }
 
@@ -25,6 +26,10 @@ const FooterContainer = styled.footer`
 const SocialsContainer = styled.div`
   display: flex;
   gap: 64px;
+
+  @media (max-width: 500px) {
+    gap: 20px;
+  }
 `;
 
 const SocialLink = styled.a`
@@ -62,6 +67,10 @@ const Footer = () => {
         <SocialLink href='https://www.linkedin.com/in/luismfcouto/' target='_blank'>
           <Image src={linkedin} alt="link to linkedin" layout="fixed" />
           <SocialTitle>Linkedin</SocialTitle>
+        </SocialLink>
+        <SocialLink href='/pdf/cvPDF.pdf' target='_blank'>
+          <Image src={cv} alt="link to resume" layout="fixed" />
+          <SocialTitle>Resume</SocialTitle>
         </SocialLink>
       </SocialsContainer>
 
