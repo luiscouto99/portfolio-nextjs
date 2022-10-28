@@ -5,6 +5,7 @@ import portrait from "../../../public/images/portrait.jpg";
 
 import styled from "styled-components";
 import HoverableImage from "../../../components/HoverableImage";
+import { useWindowWidth } from "../../../hooks/useWindowWidth";
 
 const Hero = styled.section`
   margin: 0 276px;
@@ -127,6 +128,7 @@ const ImageContainer = styled(Image)`
 `;
 
 const HeroSection = () => {
+  const screenWidth = useWindowWidth();
   return (
     <Hero>
       <HeroInfo>
@@ -140,19 +142,19 @@ const HeroSection = () => {
         </CareerContainer>
       </HeroInfo>
 
-      {/* <HeroPortrait>
-        <ImageContainer
-          src={portrait}
-          alt="portrait of myself"
-          layout="responsive"
-        />
-      </HeroPortrait> */}
-
-      <HeroPortrait>
-        <HoverableImage />
-      </HeroPortrait>
-
-
+      {screenWidth < 1375 ? (
+        <HeroPortrait>
+          <ImageContainer
+            src={portrait}
+            alt="portrait of myself"
+            layout="responsive"
+          />
+        </HeroPortrait>
+      ) : (
+        <HeroPortrait>
+          <HoverableImage />
+        </HeroPortrait>
+      )}
     </Hero>
   );
 };

@@ -4,7 +4,7 @@ import { useSpring, animated } from 'react-spring';
 
 import styled from 'styled-components';
 
-import cutPortrait from '../public/images/cut-portrait2.png';
+import cutPortrait from '../public/images/cut-portrait.png';
 import cutBG from '../public/images/cut-bg.jpg';
 
 
