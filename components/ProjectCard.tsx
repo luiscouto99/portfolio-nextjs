@@ -90,6 +90,7 @@ const Separator = styled.div`
   width: 204px;
   height: 2px;
   background-color: rgba(2, 109, 83, 0.4);
+  
    @media (max-width: 1080px) {
     margin: 0 auto;
    }

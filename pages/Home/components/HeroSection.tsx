@@ -4,6 +4,7 @@ import Image from "next/image";
 import portrait from "../../../public/images/portrait.jpg";
 
 import styled from "styled-components";
+import HoverableImage from "../../../components/HoverableImage";
 
 const Hero = styled.section`
   margin: 0 276px;
@@ -139,13 +140,19 @@ const HeroSection = () => {
         </CareerContainer>
       </HeroInfo>
 
-      <HeroPortrait>
+      {/* <HeroPortrait>
         <ImageContainer
           src={portrait}
           alt="portrait of myself"
           layout="responsive"
         />
+      </HeroPortrait> */}
+
+      <HeroPortrait>
+        <HoverableImage />
       </HeroPortrait>
+
+
     </Hero>
   );
 };

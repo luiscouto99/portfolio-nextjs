@@ -11,7 +11,7 @@ type ScrollContainerProps = {
 const ScrollContainer = styled.div<ScrollContainerProps>`
     position: fixed;
     bottom: ${props => props.pageYOffset > 4200 ? "120px" : "20px"};
-    right: 16px;
+    right: 8px;
     cursor: pointer;
     opacity: ${props => props.pageYOffset >= 835 ? 1 : 0};
     transition: 0.6s ease-in-out;

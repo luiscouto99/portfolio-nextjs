@@ -5,7 +5,6 @@ import HeroSection from "./Home/components/HeroSection";
 import ProjectSection from "./Home/components/ProjectSection";
 import AboutSection from "./Home/components/AboutSection";
 import ScrollToTop from "../components/ScrollToTop";
-import PageLoader from "../components/PageLoader";
 import { useWindowYOffset } from "../hooks/useWindowYOffset";
 
 const Home: NextPage = () => {
