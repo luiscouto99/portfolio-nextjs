@@ -13,15 +13,18 @@ type FormContainerProps = {
     textAreaHeight: number | undefined;
 }
 const FormContainer = styled.form<FormContainerProps>`
-    margin: 0 128px;
+    margin: 280px 0 80px;
     padding: 32px 128px;
     display: flex;
     flex-direction: column;
     /* align-items: center; */
-    gap: 20px;
     border-radius: 12px;
     background-color: rgba(3, 30, 25, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.1);
+
+    & label:first-of-type {
+        margin-top: 40px;
+    }
 
     & label:last-of-type {
         align-items: ${(props) => props.textAreaHeight > 43 ? 'flex-start' : 'center'};
@@ -29,6 +32,22 @@ const FormContainer = styled.form<FormContainerProps>`
         & div:first-child {
             margin-top: ${(props) => props.textAreaHeight > 43 ? '17px' : '0px'};
         }
+    }
+
+    @media (max-width: 860px) {
+        margin: 200px 0 80px;
+    }
+
+    @media (max-width: 860px) {
+        margin: 0 0 80px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 32px 60px;
+    }
+
+    @media (max-width: 500px) {
+        padding: 32px 20px;
     }
 `;
 
@@ -42,6 +61,7 @@ const Label = styled.label`
     gap: 8px;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+    margin-bottom: 40px;
 `;
 
 const ImageWrapper = styled.div`
@@ -99,8 +119,37 @@ const SubmitButton = styled.input`
     font-size: 20px;  
     border-radius: 4px;
     cursor: pointer;
-    width: 50%;
-    margin: 0 auto;
+    width: 40%;
+    max-width: 300px;
+    margin: 80px auto 0;
+`;
+
+const ThanksContainer = styled.div`
+    margin: 280px 0 80px;
+    padding: 32px 128px;
+    border-radius: 12px;
+    background-color: rgba(3, 30, 25, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    @media (max-width: 860px) {
+        margin: 200px 0 80px;
+    }
+
+    @media (max-width: 860px) {
+        margin: 0 0 80px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 32px 60px;
+    }
+
+    @media (max-width: 500px) {
+        padding: 32px 20px;
+    }
+`;
+
+const Thanks = styled.p`
+text-align: center;
 `;
 
 const ContactForm = () => {
@@ -108,10 +157,14 @@ const ContactForm = () => {
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
     const form = useRef<HTMLFormElement>(null as any);
 
+    const [isThanksRendered, setThanksRendered] = useState(false);
+
     useAutosizeTextArea(textAreaRef.current, messageInput);
 
     const sendEmail = (event: any) => {
         event.preventDefault();
+
+        setThanksRendered(true);
 
         const email = {
             name: form.current.user_name.value,
@@ -128,39 +181,48 @@ const ContactForm = () => {
     };
 
     return (
-        <FormContainer textAreaHeight={textAreaRef?.current?.offsetHeight} ref={form} onSubmit={sendEmail}>
-            <Title>Contact Me</Title>
-            <Label htmlFor='name' >
-                <ImageWrapper>
-                    <Image src={name} alt='name icon' />
-                </ImageWrapper>
-                <Input type="text" placeholder='Full Name' name="user_name" required />
-            </Label>
+        <>
 
-            <Label htmlFor='email'>
-                <ImageWrapper>
-                    <Image src={email} alt='name icon' />
-                </ImageWrapper>
-                <Input type="email" placeholder='example@email.com' name="user_email" required />
-            </Label>
-
-            <Label htmlFor='message'>
-                <ImageWrapper>
-                    <Image src={message} alt='name icon' />
-                </ImageWrapper>
-                <TextArea
-                    ref={textAreaRef}
-                    placeholder='Write your message here'
-                    onChange={(event) => setMessageInput(event?.target.value)}
-                    rows={1}
-                    name='message'
-                    value={messageInput}
-                    required
-                />
-            </Label>
-
-            <SubmitButton type="submit" value='Send' />
-        </FormContainer>
+            {isThanksRendered ? (
+                <ThanksContainer>
+                    <Thanks>Thank you for reaching out to me. I will get back to you as soon as possible : &#41;</Thanks>
+                </ThanksContainer>
+            ) : (
+                <FormContainer textAreaHeight={textAreaRef?.current?.offsetHeight} ref={form} onSubmit={sendEmail}>
+                    <Title>Contact Me</Title>
+                    <Label htmlFor='name' >
+                        <ImageWrapper>
+                            <Image src={name} alt='name icon' />
+                        </ImageWrapper>
+                        <Input type="text" placeholder='Full Name' name="user_name" autoComplete="off" required />
+                    </Label>
+    
+                    <Label htmlFor='email'>
+                        <ImageWrapper>
+                            <Image src={email} alt='name icon' />
+                        </ImageWrapper>
+                        <Input type="email" placeholder='example@email.com' name="user_email" autoComplete="off" required />
+                    </Label>
+    
+                    <Label htmlFor='message'>
+                        <ImageWrapper>
+                            <Image src={message} alt='name icon' />
+                        </ImageWrapper>
+                        <TextArea
+                            ref={textAreaRef}
+                            placeholder='Write your message here'
+                            onChange={(event) => setMessageInput(event?.target.value)}
+                            rows={1}
+                            name='message'
+                            value={messageInput}
+                            required
+                        />
+                    </Label>
+    
+                    <SubmitButton type="submit" value='Send' />
+                </FormContainer>
+            )}
+        </>
     )
 }
 

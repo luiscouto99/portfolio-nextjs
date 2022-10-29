@@ -15,6 +15,7 @@ const ScrollContainer = styled.div<ScrollContainerProps>`
     cursor: pointer;
     opacity: ${props => props.pageYOffset >= 835 ? 1 : 0};
     transition: 0.6s ease-in-out;
+    z-index: 1;
 `;
 
 const ScrollToTop = ({ pageYOffset }: { pageYOffset: number }) => {

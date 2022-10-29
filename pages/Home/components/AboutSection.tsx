@@ -21,7 +21,7 @@ const AboutContainer = styled.section`
   }
 
   @media (max-width: 768px) {
-    margin: 40px 20px;
+    margin: 40px 20px 20px;
   }
 `;
 
@@ -113,6 +113,10 @@ const GetToKnowMe = styled.div`
   & h2:last-child {
     justify-content: flex-end;
     z-index: 3;
+
+    @media (max-width: 500px) {
+      padding-bottom: 75px;
+    }
   }
 
   @media (max-width: 1480px) {
@@ -152,58 +156,61 @@ const Title = styled.h2`
     font-size: 32px;
     padding: 150px 0;
   }
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    padding: 75px 0 150px;
+  }
 `;
 
 type ImageWrapperProps = {
   pageYOffset: number;
   handleScroll: boolean;
+  screenWidth: number;
 };
 const ImageWrapper = styled.div<ImageWrapperProps>`
   position: absolute;
-  top: ${[
-    (props) =>
-      props.pageYOffset >= 2730 ? '375px' : "90%",
-  ]};
+  top: ${(props) => props.screenWidth <= 500 ? '270px' : props.pageYOffset >= 2730 ? '375px' : '90%'};
   transition: 1s ease-in-out;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
 `;
 
-const EmailContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 240px 0;
+// const EmailContainer = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   margin: 240px 0;
 
-  @media (max-width: 680px) {
-    margin: 80px 0;
-  }
+//   @media (max-width: 680px) {
+//     margin: 80px 0;
+//   }
 
 
-  a {
-    font-size: 80px;
-    font-weight: 400;
-    padding-bottom: 4px;
-    border-bottom: 4px solid var(--primary-color);
-    transition: 1s ease-in-out;
+//   a {
+//     font-size: 80px;
+//     font-weight: 400;
+//     padding-bottom: 4px;
+//     border-bottom: 4px solid var(--primary-color);
+//     transition: 1s ease-in-out;
 
-    @media (max-width: 1280px) {
-      font-size: 64px;
-    }
+//     @media (max-width: 1280px) {
+//       font-size: 64px;
+//     }
 
-    @media (max-width: 1280px) {
-      font-size: 48px;
-    }
+//     @media (max-width: 1280px) {
+//       font-size: 48px;
+//     }
 
-    @media (max-width: 680px) {
-      font-size: 34px;
-    }
+//     @media (max-width: 680px) {
+//       font-size: 34px;
+//     }
 
-    @media (max-width: 500px) {
-      font-size: 26px;
-    }
-  }
-`;
+//     @media (max-width: 500px) {
+//       font-size: 26px;
+//     }
+//   }
+// `;
 
 const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
   const handleScroll = (minY: number) => (pageYOffset >= minY ? true : false);
@@ -233,6 +240,7 @@ const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
           Get to <br /> know me
         </Title>
         <ImageWrapper
+          screenWidth={screenWidth}
           pageYOffset={pageYOffset}
           handleScroll={handleScroll(screenWidth > 768 ? 3000 : 2600)}
         >
@@ -244,9 +252,9 @@ const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
         </Title>
       </GetToKnowMe>
 
-      <EmailContainer>
+      {/* <EmailContainer>
         <Link href="mailto: luismfcouto@gmail.com">luismfcouto@gmail.com</Link>
-      </EmailContainer>
+      </EmailContainer> */}
 
       <ContactForm />
     </AboutContainer>
