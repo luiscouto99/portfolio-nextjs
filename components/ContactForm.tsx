@@ -10,14 +10,13 @@ import message from '../public/icons/message.png';
 import useAutosizeTextArea from '../hooks/useAutosizeTextArea';
 
 type FormContainerProps = {
-    textAreaHeight: number | undefined;
+    textAreaHeight: any;
 }
 const FormContainer = styled.form<FormContainerProps>`
     margin: 280px 0 80px;
     padding: 32px 128px;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     border-radius: 12px;
     background-color: rgba(3, 30, 25, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.1);
