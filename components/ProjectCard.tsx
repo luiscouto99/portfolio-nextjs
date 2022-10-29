@@ -208,9 +208,9 @@ const ProjectCard = ({
           ) : (
             <ImageWrapper>
               {screenWidth > 1080 ? (
-                <ImageContainer src={project.image} alt="" layout='fill' />
+                <ImageContainer src={project.image} alt="project thumbnail" layout='fill' />
               ) : (
-                <ImageContainer src={project.mobileImage} alt="" layout='fill' />
+                <ImageContainer src={project.mobileImage} alt="project thumbnail mobile" layout='fill' />
               )}
             </ImageWrapper>
           )

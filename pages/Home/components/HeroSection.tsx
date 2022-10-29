@@ -4,8 +4,6 @@ import Image from "next/image";
 import portrait from "../../../public/images/portrait.jpg";
 
 import styled from "styled-components";
-import HoverableImage from "../../../components/HoverableImage";
-import { useWindowWidth } from "../../../hooks/useWindowWidth";
 
 const Hero = styled.section`
   margin: 0 276px;
@@ -128,7 +126,6 @@ const ImageContainer = styled(Image)`
 `;
 
 const HeroSection = () => {
-  const screenWidth = useWindowWidth();
   return (
     <Hero>
       <HeroInfo>
@@ -138,23 +135,17 @@ const HeroSection = () => {
 
         <CareerContainer>
           <Separator />
-          <Careers>Designer & Front End Developer</Careers>
+          <Careers>Designer & Frontend Developer</Careers>
         </CareerContainer>
       </HeroInfo>
 
-      {screenWidth < 1375 ? (
-        <HeroPortrait>
-          <ImageContainer
-            src={portrait}
-            alt="portrait of myself"
-            layout="responsive"
-          />
-        </HeroPortrait>
-      ) : (
-        <HeroPortrait>
-          <HoverableImage />
-        </HeroPortrait>
-      )}
+      <HeroPortrait>
+        <ImageContainer
+          src={portrait}
+          alt="portrait of myself"
+          layout="responsive"
+        />
+      </HeroPortrait>
     </Hero>
   );
 };

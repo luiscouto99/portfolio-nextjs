@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import styled from "styled-components";
 
-import scroll from "../public/images/scroll.png";
+import scroll from "../public/icons/scroll.png";
 
 type ScrollContainerProps = {
   pageYOffset: number;

@@ -3,9 +3,9 @@ import Image from "next/image";
 
 import styled from "styled-components";
 
-import github from "../public/images/github.png";
-import linkedin from "../public/images/linkedin.png";
-import cv from "../public/images/cv.png";
+import github from "../public/icons/github.png";
+import linkedin from "../public/icons/linkedin.png";
+import cv from "../public/icons/cv.png";
 
 const FooterContainer = styled.footer`
   margin: 12px 64px;

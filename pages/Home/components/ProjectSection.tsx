@@ -18,14 +18,13 @@ const ProjectsContainer = styled.section<ProjectsProps>`
   flex-direction: column;
   row-gap: 100px;
   color: var(--primary-color);
-
   background-image: url(${blur.src});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-color: rgba(3, 30, 25, 0.75);
+  /* background-color: rgba(3, 30, 25, 0.75); */
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 1s ease-in-out;
 
   & > div:last-child {
