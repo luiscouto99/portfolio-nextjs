@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 import illustrationM from "../../../public/images/illustrationM.jpg";
 import { useWindowWidth } from "../../../hooks/useWindowWidth";
+import ContactForm from "../../../components/ContactForm";
 
 const AboutContainer = styled.section`
   margin: 160px 276px;
@@ -246,6 +247,8 @@ const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
       <EmailContainer>
         <Link href="mailto: luismfcouto@gmail.com">luismfcouto@gmail.com</Link>
       </EmailContainer>
+
+      <ContactForm />
     </AboutContainer>
   );
 };
