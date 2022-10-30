@@ -109,7 +109,7 @@ const ItemContent = styled.p`
 
 const Time = styled.p``;
 
-const Header = ({ setEasterEgg, altered }: { setEasterEgg?: React.Dispatch<React.SetStateAction<boolean>>, altered?: boolean }) => {
+const Header = ({ setEasterEgg, altered }: { setEasterEgg: React.Dispatch<React.SetStateAction<boolean>>, altered?: boolean }) => {
   const [time, setTime] = useState("");
   const [counter, setCounter] = useState(0);
 
