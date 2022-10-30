@@ -9,7 +9,7 @@ import { useWindowWidth } from "../../../hooks/useWindowWidth";
 import ContactForm from "../../../components/ContactForm";
 
 const AboutContainer = styled.section`
-  margin: 160px 276px;
+  margin: 160px 276px 32px;
   z-index: 0;
 
   @media (max-width: 1410px) {

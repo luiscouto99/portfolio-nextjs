@@ -8,18 +8,26 @@ import name from '../public/icons/name.png';
 import email from '../public/icons/email.png';
 import message from '../public/icons/message.png';
 import useAutosizeTextArea from '../hooks/useAutosizeTextArea';
+import LoadingCircle from './LoadingCircle';
+import { useWindowWidth } from '../hooks/useWindowWidth';
+import { useWindowYOffset } from '../hooks/useWindowYOffset';
 
 type FormContainerProps = {
     textAreaHeight: any;
+    screenWidth: number;
+    pageYOffset: number;
 }
 const FormContainer = styled.form<FormContainerProps>`
-    margin: 280px 0 80px;
-    padding: 32px 128px;
+    max-width: 700px;
+    margin: 280px auto 80px;
+    padding: 32px 60px;
     display: flex;
     flex-direction: column;
     border-radius: 12px;
     background-color: rgba(3, 30, 25, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: ${(props) => props.screenWidth <= 860 && props.pageYOffset >= 3400 ? 1 : props.screenWidth > 860 && props.pageYOffset >= 4000 ? 1 : 0};
+    transition: opacity 1s ease-in-out;
 
     & label:first-of-type {
         margin-top: 40px;
@@ -51,7 +59,11 @@ const FormContainer = styled.form<FormContainerProps>`
 `;
 
 const Title = styled.h2`
+    margin-top: 38px;
 
+    @media (max-width: 500px) {
+        font-size: 20px
+    }
 `;
 
 const Label = styled.label`
@@ -97,7 +109,6 @@ const TextArea = styled.textarea`
   border: 1px solid transparent; 
   resize: none;
 
-
   &::placeholder {
     color: rgba(102, 217, 156, 0.4);
   }
@@ -109,7 +120,6 @@ const TextArea = styled.textarea`
 
 const SubmitButton = styled.input`
     border: none;
-    background: linear-gradient(90deg, rgba(102,217,155,1) 0%, rgba(55,125,106,1) 100%);
     padding: 12px 10px;
     text-transform: uppercase;
     font-weight: 700;
@@ -118,8 +128,22 @@ const SubmitButton = styled.input`
     border-radius: 4px;
     cursor: pointer;
     width: 40%;
-    max-width: 300px;
-    margin: 80px auto 0;
+    max-width: 220px;
+    margin: 40px auto 48px;        
+    background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.3);
+    color: #fff;
+    background-size: 300% 100%;
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+        background-position: 100% 0;
+        transition: all .4s ease-in-out;
+    }
+
+    @media (max-width: 500px) {
+        font-size: 16px
+    }
 `;
 
 const ThanksContainer = styled.div`
@@ -152,10 +176,12 @@ text-align: center;
 
 const ContactForm = () => {
     const [messageInput, setMessageInput] = useState("");
+    const [isThanksRendered, setThanksRendered] = useState(false);
+    const pageYOffset = useWindowYOffset();
+    const screenWidth = useWindowWidth();
+
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
     const form = useRef<HTMLFormElement>(null as any);
-
-    const [isThanksRendered, setThanksRendered] = useState(false);
 
     useAutosizeTextArea(textAreaRef.current, messageInput);
 
@@ -180,13 +206,12 @@ const ContactForm = () => {
 
     return (
         <>
-
             {isThanksRendered ? (
                 <ThanksContainer>
                     <Thanks>Thank you for reaching out to me. I will get back to you as soon as possible : &#41;</Thanks>
                 </ThanksContainer>
             ) : (
-                <FormContainer textAreaHeight={textAreaRef?.current?.offsetHeight} ref={form} onSubmit={sendEmail}>
+                <FormContainer textAreaHeight={textAreaRef?.current?.offsetHeight} ref={form} onSubmit={sendEmail} pageYOffset={pageYOffset} screenWidth={screenWidth}>
                     <Title>Contact Me</Title>
                     <Label htmlFor='name' >
                         <ImageWrapper>
@@ -194,14 +219,14 @@ const ContactForm = () => {
                         </ImageWrapper>
                         <Input type="text" placeholder='Full Name' name="user_name" autoComplete="off" required />
                     </Label>
-    
+
                     <Label htmlFor='email'>
                         <ImageWrapper>
                             <Image src={email} alt='name icon' />
                         </ImageWrapper>
                         <Input type="email" placeholder='example@email.com' name="user_email" autoComplete="off" required />
                     </Label>
-    
+
                     <Label htmlFor='message'>
                         <ImageWrapper>
                             <Image src={message} alt='name icon' />
@@ -216,8 +241,8 @@ const ContactForm = () => {
                             required
                         />
                     </Label>
-    
-                    <SubmitButton type="submit" value='Send' />
+
+                    <SubmitButton type="submit" value='Submit' />
                 </FormContainer>
             )}
         </>
