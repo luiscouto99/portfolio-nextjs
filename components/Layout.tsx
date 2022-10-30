@@ -1,6 +1,9 @@
-import React from 'react'
+import dynamic from 'next/dynamic';
+import React, { useState } from 'react'
 
 import styled from 'styled-components';
+import EasterEgg from './EasterEgg';
+import EasterEggLog from './EasterEggLog';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -26,15 +29,30 @@ const Main = styled.main`
 `;
 
 const Layout = ({ children, isLoading }: { children: any, isLoading: boolean }) => {
+  const [easterEgg, setEasterEgg] = useState(false);
+
+  const DynamicEasterEgg = dynamic(
+    () => import("./EasterEgg"),
+    { ssr: false }
+  )
+
   return (
     <Container isLoading={isLoading}>
       {!isLoading && (
         <>
-          <Header />
-          <Main>
-            {children}
-          </Main>
-          <Footer />
+          {easterEgg ? (
+            <DynamicEasterEgg />
+          ) : (
+            <>
+              <EasterEggLog />
+              <Header setEasterEgg={setEasterEgg} />
+              <Main>
+                {children}
+              </Main>
+              <Footer />
+
+            </>
+          )}
         </>
       )}
     </Container>

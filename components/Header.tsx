@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const HeaderContainer = styled.header`
-  margin: 12px 64px;
+type HeaderContainerProps = {
+  altered?: boolean;
+}
+const HeaderContainer = styled.header<HeaderContainerProps>`
+  padding: 12px 64px;
   height: 100px;
   display: flex;
   align-items: center;
 
   @media (max-width: 768px) {
-    margin: 12px 20px;
+    padding: 12px 20px;
   }
+
+  ${props => props.altered && css`
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.8) 100%);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+  `}
 `;
 
 const NavBar = styled.nav`
@@ -27,6 +36,7 @@ const Logo = styled.div`
   display: flex;
   align-items: center;
   width: 50%;
+  cursor: pointer;
 `;
 
 const NavbarList = styled.ul`
@@ -99,8 +109,9 @@ const ItemContent = styled.p`
 
 const Time = styled.p``;
 
-const Header = () => {
+const Header = ({ setEasterEgg, altered }: { setEasterEgg?: React.Dispatch<React.SetStateAction<boolean>>, altered?: boolean }) => {
   const [time, setTime] = useState("");
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     setInterval(() => {
@@ -114,12 +125,17 @@ const Header = () => {
     }, 1000);
   }, [time]);
 
+  const handleClick = () => {
+    if (counter === 4) {
+      setEasterEgg(true);
+    } 
+    setCounter(counter + 1);
+  }
+
   return (
-    <HeaderContainer>
+    <HeaderContainer altered={altered}>
       <NavBar>
-        <Logo>
-          <Link href="/">LUIS COUTO</Link>
-        </Logo>
+        <Logo onClick={handleClick}>LUIS COUTO</Logo>
 
         <NavbarList>
           <NavbarItem>
@@ -143,5 +159,7 @@ const Header = () => {
     </HeaderContainer>
   );
 };
+
+
 
 export default Header;

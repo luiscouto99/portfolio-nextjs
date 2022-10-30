@@ -7,7 +7,7 @@
 
 :root {
   --background-color: #171717;
-  --primary-color: #66D99B; 
+  --primary-color: #66D99B;
   --secondary-color: #377d6a;
   --text-color: #dfd3c3;
 }
@@ -20,9 +20,16 @@ body {
   background-color: var(--background-color);
   scroll-behavior: smooth;
   overflow-x: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-body::-webkit-scrollbar, textarea::-webkit-scrollbar {
+body::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
   width: 14px;
 }
 
@@ -52,6 +59,8 @@ a {
   text-decoration: none;
 }
 
-button, textarea, input {
+button,
+textarea,
+input {
   font-family: 'Montserrat', sans-serif;
 }
