@@ -8,7 +8,6 @@ import name from '../public/icons/name.png';
 import email from '../public/icons/email.png';
 import message from '../public/icons/message.png';
 import useAutosizeTextArea from '../hooks/useAutosizeTextArea';
-import LoadingCircle from './LoadingCircle';
 import { useWindowWidth } from '../hooks/useWindowWidth';
 import { useWindowYOffset } from '../hooks/useWindowYOffset';
 
