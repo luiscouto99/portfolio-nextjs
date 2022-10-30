@@ -49,11 +49,14 @@ const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
         window.pageXOffset !== undefined
           ? window.pageXOffset
           : document.body.scrollLeft;
-      cursor.current.style.left = x - scrollLeft + "px";
-      cursor.current.style.top = y - scrollTop + "px";
+      if (cursor.current !== null) {
+        cursor.current.style.left = x - scrollLeft + "px";
+        cursor.current.style.top = y - scrollTop + "px";
+      }
     };
 
     document.addEventListener("mousemove", trackCursor);
+    return () => document.removeEventListener("mousemove", trackCursor);
   }, []);
 
   return (
