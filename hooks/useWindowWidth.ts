@@ -8,7 +8,7 @@ export const useWindowWidth = () => {
     window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
 
     return () => {
-      window.removeEventListener("scroll", () =>
+      window.removeEventListener("resize", () =>
         setScreenWidth(window.innerWidth)
       );
     };

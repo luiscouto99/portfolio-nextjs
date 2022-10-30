@@ -8,7 +8,7 @@ export const useWindowHeight = () => {
     window.addEventListener("resize", () => setScreenHeight(window.innerHeight));
 
     return () => {
-      window.removeEventListener("scroll", () =>
+      window.removeEventListener("resize", () =>
         setScreenHeight(window.innerHeight)
       );
     };

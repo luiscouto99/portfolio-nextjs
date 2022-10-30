@@ -1,14 +1,10 @@
-// @ts-nocheck
-
-// TODO: Remove @ts-nocheck and work this page out
-
 import React from 'react'
 import Sketch from "react-p5";
 import p5Types from "p5";
 import { useWindowWidth } from '../hooks/useWindowWidth';
 import { useWindowHeight } from '../hooks/useWindowHeight';
 
-let video: p5Types.Element;
+let video: any;
 const EasterEgg = () => {
     const screenWidth = useWindowWidth();
     const screenHeight = useWindowHeight();
@@ -20,7 +16,6 @@ const EasterEgg = () => {
         video.size(p5.width, p5.height);
         video.hide();
     };
-
 
     const draw = (p5: p5Types) => {
         p5.background(255);
