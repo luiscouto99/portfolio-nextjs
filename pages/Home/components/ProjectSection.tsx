@@ -122,10 +122,10 @@ const ProjectSection = ({ pageYOffset }: { pageYOffset: number }) => {
   const handleMouseLeave = () => setIsVisible(false);
 
   return (
-    <ProjectsContainer pageYOffset={pageYOffset}>
+    <ProjectsContainer pageYOffset={pageYOffset} id='scrollProj'>
       {screenWidth > 768 && <CustomCursor isVisible={isVisible} />}
       
-      <ButtonToScroll onClick={() => window.scrollTo(0, window.innerWidth > 1410 ? 835 : 791)}>
+      <ButtonToScroll  onClick={() => document?.getElementById('scrollProj')?.scrollIntoView()}>
         <SectionTitle>Selected Works (3)</SectionTitle>
       </ButtonToScroll>
       <ProjectContainer>

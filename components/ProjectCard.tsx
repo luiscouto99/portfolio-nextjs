@@ -35,6 +35,10 @@ const CardAnchor = styled.a`
 const CardInfo = styled.div`
   display: flex;
   flex-direction: column;  
+
+  @media (max-width: 1410px) {
+    text-align: center;
+  }
 `;
 
 const Title = styled.h2`
@@ -91,7 +95,7 @@ const Separator = styled.div`
   height: 2px;
   background-color: rgba(2, 109, 83, 0.4);
   
-   @media (max-width: 1080px) {
+   @media (max-width: 1410px) {
     margin: 0 auto;
    }
 `;
@@ -112,8 +116,12 @@ const Description = styled.p`
     width: 40%;
   }
 
-  @media (max-width: 1080px) {
+  @media (max-width: 1410px) {
+    font-size: 16px;
     width: 100%;
+  }
+
+  @media (max-width: 1080px) {
     text-align: center;
   }
 

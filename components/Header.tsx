@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import styled, { css } from "styled-components";
+import { useWindowYOffset } from "../hooks/useWindowYOffset";
 
 type HeaderContainerProps = {
   altered?: boolean;
@@ -112,6 +113,7 @@ const Time = styled.p``;
 const Header = ({ setEasterEgg, altered }: { setEasterEgg: React.Dispatch<React.SetStateAction<boolean>>, altered?: boolean }) => {
   const [time, setTime] = useState("");
   const [counter, setCounter] = useState(0);
+  const pageYOffset = useWindowYOffset();
 
   useEffect(() => {
     setInterval(() => {
@@ -132,6 +134,7 @@ const Header = ({ setEasterEgg, altered }: { setEasterEgg: React.Dispatch<React.
     setCounter(counter + 1);
   }
 
+
   return (
     <HeaderContainer altered={altered}>
       <NavBar>
@@ -144,12 +147,12 @@ const Header = ({ setEasterEgg, altered }: { setEasterEgg: React.Dispatch<React.
 
           <NavbarItem>
             <ItemWrapper>
-              <ItemContent onClick={() => window.scrollTo(0, window.innerWidth > 1410 ? 835 : 791)}>
+              <ItemContent onClick={() => document?.getElementById('scrollProj')?.scrollIntoView()}>
                 Projects
               </ItemContent>
             </ItemWrapper>
             <ItemWrapper>
-              <ItemContent onClick={() => window.scrollTo(0, 3000)}>
+              <ItemContent onClick={() => document?.getElementById('scrollAbout')?.scrollIntoView()}>
                 About
               </ItemContent>
             </ItemWrapper>

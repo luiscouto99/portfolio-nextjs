@@ -94,13 +94,34 @@ const DescriptionLine = styled.h2<DescriptionLineProps>`
   }
 `;
 
+const SpanWrapper = styled.div`
+  display: inline;
+	position:relative;
+`;
+
 const DescriptionSpan = styled.span`
   font-weight: 500;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 100%;
+    background: var(--secondary-color);
+    z-index: -1;
+    left: 0;
+    transition: width 0.35s cubic-bezier(1, 0.08, 0.07, 1.01);
+  }
+
+  &:hover::before {
+    content: '';
+    width: 100%;
+  }
 `;
 
 const GetToKnowMe = styled.div`
   position: relative;
-  margin: 160px 60px;
+  margin: 360px 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -177,61 +198,32 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   z-index: 2;
 `;
 
-// const EmailContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   margin: 240px 0;
-
-//   @media (max-width: 680px) {
-//     margin: 80px 0;
-//   }
-
-
-//   a {
-//     font-size: 80px;
-//     font-weight: 400;
-//     padding-bottom: 4px;
-//     border-bottom: 4px solid var(--primary-color);
-//     transition: 1s ease-in-out;
-
-//     @media (max-width: 1280px) {
-//       font-size: 64px;
-//     }
-
-//     @media (max-width: 1280px) {
-//       font-size: 48px;
-//     }
-
-//     @media (max-width: 680px) {
-//       font-size: 34px;
-//     }
-
-//     @media (max-width: 500px) {
-//       font-size: 26px;
-//     }
-//   }
-// `;
-
 const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
   const handleScroll = (minY: number) => (pageYOffset >= minY ? true : false);
   const screenWidth = useWindowWidth();
 
   return (
-    <AboutContainer>
-      <Greeting handleScroll={handleScroll(2200)}>Hey there : &#41;</Greeting>
+    <AboutContainer id="scrollAbout">
+      <Greeting handleScroll={handleScroll(2200)} >Hey there : &#41;</Greeting>
 
       <Description>
         <DescriptionLine handleScroll={handleScroll(2300)}>
-          I&apos;m a portuguese{" "}
-          <DescriptionSpan>frontend developer</DescriptionSpan>
+          <SpanWrapper>
+            <DescriptionSpan>Frontend developer</DescriptionSpan>
+          </SpanWrapper>
+          {" "}based in Porto{" "}
         </DescriptionLine>
 
         <DescriptionLine handleScroll={handleScroll(2500)}>
-          who started as a <DescriptionSpan>graphic designer,</DescriptionSpan>{" "}
+          and a former{" "}
+          <SpanWrapper>
+            <DescriptionSpan>graphic designer</DescriptionSpan>
+          </SpanWrapper>
+          {" "}(UI),{" "}
         </DescriptionLine>
 
         <DescriptionLine handleScroll={handleScroll(2700)}>
-          and developed a passion for coding.
+          who now codes for the web.
         </DescriptionLine>
       </Description>
 
@@ -251,10 +243,6 @@ const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
           — and reach <br /> out to me!
         </Title>
       </GetToKnowMe>
-
-      {/* <EmailContainer>
-        <Link href="mailto: luismfcouto@gmail.com">luismfcouto@gmail.com</Link>
-      </EmailContainer> */}
 
       <ContactForm />
     </AboutContainer>
