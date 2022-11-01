@@ -8,6 +8,7 @@ import styled from "styled-components";
 const Hero = styled.section`
   margin: 0 276px;
   display: flex;
+  z-index: 1;
 
   @media (max-width: 1680px) {
     margin: 0 64px;

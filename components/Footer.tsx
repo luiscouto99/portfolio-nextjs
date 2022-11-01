@@ -9,10 +9,10 @@ import cv from "../public/icons/cv.png";
 
 const FooterContainer = styled.footer`
   margin: 12px 64px;
-  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 1;
 
   @media (max-width: 940px) {
     flex-direction: column;

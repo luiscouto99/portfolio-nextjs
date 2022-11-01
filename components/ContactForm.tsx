@@ -27,6 +27,7 @@ const FormContainer = styled.form<FormContainerProps>`
     border: 1px solid rgba(255, 255, 255, 0.1);
     opacity: ${(props) => props.screenWidth <= 860 && props.pageYOffset >= 3400 ? 1 : props.screenWidth > 860 && props.pageYOffset >= 4000 ? 1 : 0};
     transition: opacity 1s ease-in-out;
+    backdrop-filter: blur(3px);
 
     & label:first-of-type {
         margin-top: 40px;

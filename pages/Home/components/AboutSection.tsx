@@ -10,7 +10,7 @@ import ContactForm from "../../../components/ContactForm";
 
 const AboutContainer = styled.section`
   margin: 160px 276px 32px;
-  z-index: 0;
+  z-index: 1;
 
   @media (max-width: 1410px) {
     margin: 160px 212px;
@@ -33,7 +33,7 @@ const Greeting = styled.p<GreetingProps>`
   opacity: ${(props) => (props.handleScroll ? 1 : 0)};
   transition: 1s ease-in-out;
   margin-bottom: 80px;
-  color: rgba(102, 217, 155, 0.4);
+  color: #37654c;
   text-align: center;
 
   @media (max-width: 1609px) {

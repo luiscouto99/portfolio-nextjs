@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import styled, { css } from "styled-components";
-import { useWindowYOffset } from "../hooks/useWindowYOffset";
 
 type HeaderContainerProps = {
   altered?: boolean;
@@ -11,6 +10,7 @@ const HeaderContainer = styled.header<HeaderContainerProps>`
   height: 100px;
   display: flex;
   align-items: center;
+  z-index: 1;
 
   @media (max-width: 768px) {
     padding: 12px 20px;

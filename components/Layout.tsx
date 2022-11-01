@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import React, { useState } from 'react'
 
 import styled from 'styled-components';
-import EasterEgg from './EasterEgg';
+import BackgroundGrid from './BackgroundGrid';
 import EasterEggLog from './EasterEggLog';
 import Footer from './Footer';
 import Header from './Header';
@@ -25,7 +25,6 @@ const Main = styled.main`
   flex: 1;
   display: flex;
   flex-direction: column;
-  /* margin: 0 64px; */
 `;
 
 const Layout = ({ children, isLoading }: { children: any, isLoading: boolean }) => {
@@ -37,25 +36,28 @@ const Layout = ({ children, isLoading }: { children: any, isLoading: boolean }) 
   )
 
   return (
-    <Container isLoading={isLoading}>
-      {!isLoading && (
-        <>
-          {easterEgg ? (
-            <DynamicEasterEgg />
-          ) : (
-            <>
-              <EasterEggLog />
-              <Header setEasterEgg={setEasterEgg} />
-              <Main>
-                {children}
-              </Main>
-              <Footer />
+    <>
+      <BackgroundGrid />
+      <Container isLoading={isLoading}>
+        {!isLoading && (
+          <>
+            {easterEgg ? (
+              <DynamicEasterEgg />
+            ) : (
+              <>
+                <EasterEggLog />
+                <Header setEasterEgg={setEasterEgg} />
+                <Main>
+                  {children}
+                </Main>
+                <Footer />
 
-            </>
-          )}
-        </>
-      )}
-    </Container>
+              </>
+            )}
+          </>
+        )}
+      </Container>
+    </>
   )
 }
 

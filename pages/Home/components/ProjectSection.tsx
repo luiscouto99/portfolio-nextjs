@@ -22,10 +22,12 @@ const ProjectsContainer = styled.section<ProjectsProps>`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* background-color: rgba(3, 30, 25, 0.75); */
+  background-color: rgba(3, 30, 25, 0.75);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 1s ease-in-out;
+  z-index: 1;
+  backdrop-filter: blur(2px);
 
   & > div:last-child {
     & > div:last-child {
