@@ -80,32 +80,28 @@ const NavbarItem = styled.li`
 
 const ItemWrapper = styled.div`
   position: relative;
-  text-decoration: none;
-  padding: 10px 0;
-`;
-
-const ItemContent = styled.p`
+  display: inline-block;
+  overflow: hidden;
+  height: 22px;
+  transition: 0.3s ease-in-out;
   cursor: pointer;
 
-  &:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: 24px;
-    left: 0;
-    background-color: var(--primary-color);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s;
+  &:hover > * {
+    top: -100%;
   }
+`;
 
-  &:hover {
-    &:after {
-      transform-origin: bottom left;
-      transform: scaleX(1);
-    }
-  }
+type ItemContentProps = {
+  faded?: boolean;
+}
+const ItemContent = styled.p<ItemContentProps>`
+  position: relative;
+  display: block;
+  height: 100%;
+  top: 0;
+  margin: 0;
+  transition: 0.3s ease-in-out;
+  color: ${(props) => props.faded ? 'rgba(102, 217, 155, 0.6)' : 'var(--primary-color)'};
 `;
 
 const Time = styled.p``;
@@ -113,7 +109,6 @@ const Time = styled.p``;
 const Header = ({ setEasterEgg, altered }: { setEasterEgg: React.Dispatch<React.SetStateAction<boolean>>, altered?: boolean }) => {
   const [time, setTime] = useState("");
   const [counter, setCounter] = useState(0);
-  const pageYOffset = useWindowYOffset();
 
   useEffect(() => {
     setInterval(() => {
@@ -130,7 +125,7 @@ const Header = ({ setEasterEgg, altered }: { setEasterEgg: React.Dispatch<React.
   const handleClick = () => {
     if (counter === 4) {
       setEasterEgg(true);
-    } 
+    }
     setCounter(counter + 1);
   }
 
@@ -146,16 +141,17 @@ const Header = ({ setEasterEgg, altered }: { setEasterEgg: React.Dispatch<React.
           </NavbarItem>
 
           <NavbarItem>
-            <ItemWrapper>
-              <ItemContent onClick={() => document?.getElementById('scrollProj')?.scrollIntoView()}>
-                Projects
-              </ItemContent>
+
+            <ItemWrapper onClick={() => document?.getElementById('scrollProj')?.scrollIntoView()}>
+              <ItemContent> Projects</ItemContent>
+              <ItemContent faded>Projects</ItemContent>
             </ItemWrapper>
-            <ItemWrapper>
-              <ItemContent onClick={() => document?.getElementById('scrollAbout')?.scrollIntoView()}>
-                About
-              </ItemContent>
+
+            <ItemWrapper onClick={() => document?.getElementById('scrollAbout')?.scrollIntoView()}>
+              <ItemContent>About</ItemContent>
+              <ItemContent faded>About</ItemContent>
             </ItemWrapper>
+
           </NavbarItem>
         </NavbarList>
       </NavBar>
