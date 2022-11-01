@@ -131,12 +131,12 @@ const HeroSection = () => {
     <Hero>
       <HeroInfo>
         <Title>
-          Frontend <TitleSpan>Developer</TitleSpan>
+          Creative <TitleSpan>Developer</TitleSpan>
         </Title>
 
         <CareerContainer>
           <Separator />
-          <Careers>Designer & Frontend Developer</Careers>
+          <Careers>Designer & Frontend Dev</Careers>
         </CareerContainer>
       </HeroInfo>
 
