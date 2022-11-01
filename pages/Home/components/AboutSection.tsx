@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 import styled from "styled-components";
 
@@ -101,13 +100,14 @@ const SpanWrapper = styled.div`
 
 const DescriptionSpan = styled.span`
   font-weight: 500;
+  color: white;
 
   &::before {
     content: '';
     position: absolute;
     width: 0;
     height: 100%;
-    background: var(--secondary-color);
+    background: var(--primary-color);
     z-index: -1;
     left: 0;
     transition: width 0.35s cubic-bezier(1, 0.08, 0.07, 1.01);
@@ -202,6 +202,8 @@ const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
   const handleScroll = (minY: number) => (pageYOffset >= minY ? true : false);
   const screenWidth = useWindowWidth();
 
+  console.log(pageYOffset);
+
   return (
     <AboutContainer id="scrollAbout">
       <Greeting handleScroll={handleScroll(2200)} >Hey there : &#41;</Greeting>
@@ -222,7 +224,7 @@ const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
           {" "}(UI),{" "}
         </DescriptionLine>
 
-        <DescriptionLine handleScroll={handleScroll(2700)}>
+        <DescriptionLine handleScroll={handleScroll(screenWidth < 1000 ? 2600 : 2700)}>
           who now codes for the web.
         </DescriptionLine>
       </Description>

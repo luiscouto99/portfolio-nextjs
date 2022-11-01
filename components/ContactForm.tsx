@@ -25,7 +25,7 @@ const FormContainer = styled.form<FormContainerProps>`
     border-radius: 12px;
     background-color: rgba(3, 30, 25, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    opacity: ${(props) => props.screenWidth <= 860 && props.pageYOffset >= 3400 ? 1 : props.screenWidth > 860 && props.pageYOffset >= 4000 ? 1 : 0};
+    opacity: ${(props) => props.screenWidth <= 500 && props.pageYOffset >= 3100 ? 1 : props.screenWidth <= 860 && props.pageYOffset >= 3400 ? 1 : props.screenWidth > 860 && props.pageYOffset >= 4000 ? 1 : 0};
     transition: opacity 1s ease-in-out;
     backdrop-filter: blur(3px);
 
