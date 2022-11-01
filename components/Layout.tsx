@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import React, { useState } from 'react'
 
 import styled from 'styled-components';
+import { useWindowWidth } from '../hooks/useWindowWidth';
 import BackgroundGrid from './BackgroundGrid';
 import EasterEggLog from './EasterEggLog';
 import Footer from './Footer';
@@ -29,29 +30,22 @@ const Main = styled.main`
 
 const Layout = ({ children, isLoading }: { children: any, isLoading: boolean }) => {
   const [easterEgg, setEasterEgg] = useState(false);
+  const screenWidth = useWindowWidth();
 
-  const DynamicEasterEgg = dynamic(
-    () => import("./EasterEgg"),
-    { ssr: false }
-  )
+  const DynamicEasterEgg = dynamic(() => import("./EasterEgg"), { ssr: false });
 
   return (
     <>
-      <BackgroundGrid />
+      {screenWidth > 768 && <BackgroundGrid />}
       <Container isLoading={isLoading}>
         {!isLoading && (
           <>
-            {easterEgg ? (
-              <DynamicEasterEgg />
-            ) : (
+            {easterEgg ? <DynamicEasterEgg /> : (
               <>
                 <EasterEggLog />
                 <Header setEasterEgg={setEasterEgg} />
-                <Main>
-                  {children}
-                </Main>
+                <Main>{children}</Main>
                 <Footer />
-
               </>
             )}
           </>
