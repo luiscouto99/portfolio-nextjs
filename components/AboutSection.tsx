@@ -207,8 +207,6 @@ const AboutSection = ({ pageYOffset }: { pageYOffset: number }) => {
   const handleScroll = (minY: number) => (pageYOffset >= minY ? true : false);
   const screenWidth = useWindowWidth();
 
-  console.log(pageYOffset);
-
   return (
     <AboutContainer id="scrollAbout">
       <Greeting handleScroll={handleScroll(2200)} >Hey there : &#41;</Greeting>
