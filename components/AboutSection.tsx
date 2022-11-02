@@ -3,9 +3,9 @@ import Image from "next/image";
 
 import styled from "styled-components";
 
-import illustrationM from "../../../public/images/illustrationM.jpg";
-import { useWindowWidth } from "../../../hooks/useWindowWidth";
-import ContactForm from "../../../components/ContactForm";
+import illustrationM from "../public/images/illustrationM.jpg";
+import { useWindowWidth } from "../hooks/useWindowWidth";
+import ContactForm from "./ContactForm";
 
 const AboutContainer = styled.section`
   margin: 160px 276px 32px;

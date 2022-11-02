@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-import ProjectCard from "../../../components/ProjectCard";
-import { projectsDB } from "../../../projectsDB";
+import ProjectCard from "./ProjectCard";
+import { projectsDB } from "../projectsDB";
 
 import styled from "styled-components";
-import CustomCursor from "../../../components/CustomCursor";
-import blur from "../../../public/images/blur.svg";
-import { useWindowWidth } from "../../../hooks/useWindowWidth";
+import CustomCursor from "./CustomCursor";
+import blur from "../public/images/blur.svg";
+import { useWindowWidth } from "../hooks/useWindowWidth";
 
 type ProjectsProps = {
   pageYOffset: number;

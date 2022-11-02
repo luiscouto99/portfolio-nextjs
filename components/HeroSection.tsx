@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import portrait from "../../../public/images/portrait.jpg";
+import portrait from "../public/images/portrait.jpg";
 
 import styled from "styled-components";
 
