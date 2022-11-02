@@ -5,13 +5,9 @@ export const useWindowHeight = () => {
 
   useEffect(() => {
     setScreenHeight(window.innerHeight);
-    window.addEventListener("resize", () => setScreenHeight(window.innerHeight));
-
-    return () => {
-      window.removeEventListener("resize", () =>
-        setScreenHeight(window.innerHeight)
-      );
-    };
+    const trackPageHeight = () => setScreenHeight(window.innerHeight);
+    window.addEventListener("resize", trackPageHeight);
+    return () => window.removeEventListener("resize", trackPageHeight);
   }, [screenHeight]);
 
   return screenHeight;

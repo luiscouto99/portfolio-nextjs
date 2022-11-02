@@ -5,13 +5,9 @@ export const useWindowWidth = () => {
 
   useEffect(() => {
     setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
-
-    return () => {
-      window.removeEventListener("resize", () =>
-        setScreenWidth(window.innerWidth)
-      );
-    };
+    const trackWindowWidth = () => setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", trackWindowWidth);
+    return () => window.removeEventListener("resize", trackWindowWidth);
   }, [screenWidth]);
 
   return screenWidth;

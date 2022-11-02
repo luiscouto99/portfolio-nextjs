@@ -41,14 +41,8 @@ const CustomCursor = ({ isVisible }: { isVisible: boolean }) => {
     const trackCursor = (event: any) => {
       const x = event.pageX;
       const y = event.pageY;
-      const scrollTop =
-        window.pageYOffset !== undefined
-          ? window.pageYOffset
-          : document.body.scrollTop;
-      const scrollLeft =
-        window.pageXOffset !== undefined
-          ? window.pageXOffset
-          : document.body.scrollLeft;
+      const scrollTop = window.scrollY !== undefined ? window.scrollY : document.body.scrollTop;
+      const scrollLeft = window.scrollX !== undefined ? window.scrollX : document.body.scrollLeft;
       if (cursor.current !== null) {
         cursor.current.style.left = x - scrollLeft + "px";
         cursor.current.style.top = y - scrollTop + "px";
