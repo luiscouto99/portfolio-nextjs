@@ -191,7 +191,12 @@ type ImageWrapperProps = {
 };
 const ImageWrapper = styled.div<ImageWrapperProps>`
   position: absolute;
-  top: ${(props) => props.screenWidth <= 500 ? '270px' : props.pageYOffset >= 2730 ? '375px' : '90%'};
+  top: ${(props) => {
+    if (props.screenWidth <= 500) {
+      return '270px';
+    }
+    return props.pageYOffset >= 2730 ? '375px' : '90%'
+  }};
   transition: 1s ease-in-out;
   left: 50%;
   transform: translate(-50%, -50%);
