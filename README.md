@@ -2,7 +2,7 @@
 
 ## Summary:
 
-This project was developed with Next.js framework and designed in Figma, as a way of training and improving my Frontend skills. You can see it [here](https://luismfcouto.netlify.app/).
+This portfolio was developed with Reacts Next.js framework and designed in Figma, as a way of training and improving my Frontend skills. You can see it [here](https://luismfcouto.netlify.app/).
 
 ## Implementations:
 
