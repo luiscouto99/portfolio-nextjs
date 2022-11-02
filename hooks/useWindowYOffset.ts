@@ -4,11 +4,11 @@ export const useWindowYOffset = () => {
     const [pageYOffset, setPageYOffset] = useState(0);
 
     useEffect(() => {
-        window.addEventListener("scroll", () => setPageYOffset(window.pageYOffset));
+        window.addEventListener("scroll", () => setPageYOffset(window.scrollY));
 
         return () => {
             window.removeEventListener("scroll", () =>
-                setPageYOffset(window.pageYOffset)
+                setPageYOffset(window.scrollY)
             );
         };
     }, [pageYOffset]);
