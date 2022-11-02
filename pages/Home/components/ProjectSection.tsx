@@ -27,7 +27,7 @@ const ProjectsContainer = styled.section<ProjectsProps>`
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 1s ease-in-out;
   z-index: 1;
-  backdrop-filter: blur(2px);
+  /* backdrop-filter: blur(2px); faz com que o cursor parta!! */
 
   & > div:last-child {
     & > div:last-child {
