@@ -68,7 +68,7 @@ const Footer = () => {
           <Image src={linkedin} alt="link to linkedin" layout="fixed" />
           <SocialTitle>Linkedin</SocialTitle>
         </SocialLink>
-        <SocialLink href='/pdf/cvPDF.pdf' target='_blank'>
+        <SocialLink href='/pdf/cv.pdf' target='_blank'>
           <Image src={cv} alt="link to resume" layout="fixed" />
           <SocialTitle>Resume</SocialTitle>
         </SocialLink>
