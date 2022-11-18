@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/EasterEgg.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/EasterEgg.jsx", "jest.config.js", "components/ContactForm/components/Form"],
   "exclude": ["node_modules"]
 }

@@ -1,14 +1,16 @@
 import React from "react";
 import Image from "next/image";
 
-import styled from "styled-components";
-import { Project as ProjectType } from "../types/project";
+import ecommerce from "../../../public/images/ecommerce.jpg";
+import githubSVG from "../../../public/images/githubSVG.svg"
+import keyboards from "../../../public/images/keyboards.jpg";
+import pokemon from "../../../public/images/pokemon.jpg";
 
-import ecommerce from "../public/images/ecommerce.jpg";
-import keyboards from "../public/images/keyboards.jpg";
-import pokemon from "../public/images/pokemon.jpg";
-import githubSVG from "../public/images/githubSVG.svg"
-import { useWindowWidth } from "../hooks/useWindowWidth";
+import { Project as ProjectType } from "../../../types/project";
+import { useWindowWidth } from "../../../hooks/useWindowWidth";
+
+import styled from "styled-components";
+
 
 const ProjectAnchor = styled.div``;
 

@@ -3,13 +3,15 @@ import Image from "next/image";
 
 import styled from "styled-components";
 
-import scroll from "../public/icons/scroll.png";
+import scroll from "../../public/icons/scroll.png";
 
 type ScrollContainerProps = {
   pageYOffset: number;
 };
-const ScrollContainer = styled.div<ScrollContainerProps>`
+const ScrollContainer = styled.button<ScrollContainerProps>`
     position: fixed;
+    background: none;
+    border: none;
     bottom: ${props => props.pageYOffset > 4200 ? "120px" : "20px"};
     right: 8px;
     cursor: pointer;
@@ -20,8 +22,8 @@ const ScrollContainer = styled.div<ScrollContainerProps>`
 
 const ScrollToTop = ({ pageYOffset }: { pageYOffset: number }) => {
   return (
-    <ScrollContainer pageYOffset={pageYOffset}>
-      <Image src={scroll} alt="scroll to top" onClick={() => window.scrollTo(0, 0)}/>
+    <ScrollContainer pageYOffset={pageYOffset} onClick={() => window.scrollTo(0, 0)} data-testid="scroll-btn">
+      <Image src={scroll} alt="scroll to top" data-testid='scroll-img'/>
     </ScrollContainer>
   );
 };

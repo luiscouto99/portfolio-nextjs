@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 
-import ProjectCard from "./ProjectCard";
-import { projectsDB } from "../projectsDB";
+import blur from "../../public/images/blur.svg";
+
+import CustomCursor from "./components/CustomCursor";
+import ProjectCard from "./components/ProjectCard";
+
+import { projectsDB } from "../../projectsDB";
+import { useWindowWidth } from "../../hooks/useWindowWidth";
 
 import styled from "styled-components";
-import CustomCursor from "./CustomCursor";
-import blur from "../public/images/blur.svg";
-import { useWindowWidth } from "../hooks/useWindowWidth";
+import Project from "./components/Project";
 
 type ProjectsProps = {
   pageYOffset: number;
@@ -92,32 +95,8 @@ const SectionTitle = styled.p`
   }
 `;
 
-const ProjectContainer = styled.div`
-  position: relative;
-  z-index: 2;
-`;
-
-const ProjectWrapper = styled.div``;
-
-const ProjectSeparator = styled.div`
-  width: 100%;
-  height: 4px;
-  opacity: 0.5;
-  background: var(--secondary-color);
-  margin: 110px 0;
-
-  @media (max-width: 1410px) {
-    margin: 80px 0;
-  }
-
-  @media (max-width: 1410px) {
-    margin: 40px 0;
-  }
-`;
-
 const ProjectSection = ({ pageYOffset }: { pageYOffset: number }) => {
   const [isVisible, setIsVisible] = useState(false);
-
   const screenWidth = useWindowWidth();
 
   const handleMouseEnter = () => setIsVisible(true);
@@ -130,21 +109,8 @@ const ProjectSection = ({ pageYOffset }: { pageYOffset: number }) => {
       <ButtonToScroll  onClick={() => document?.getElementById('scrollProj')?.scrollIntoView()}>
         <SectionTitle>Selected Works (3)</SectionTitle>
       </ButtonToScroll>
-      <ProjectContainer>
-        {projectsDB.map((project) => {
-          return (
-            <ProjectWrapper key={project.id}>
-              <ProjectCard
-                project={project}
-                pageYOffset={pageYOffset}
-                handleMouseEnter={handleMouseEnter}
-                handleMouseLeave={handleMouseLeave}
-              />
-              <ProjectSeparator />
-            </ProjectWrapper>
-          );
-        })}
-      </ProjectContainer>
+      
+      <Project pageYOffset={pageYOffset} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />
     </ProjectsContainer>
   );
 };

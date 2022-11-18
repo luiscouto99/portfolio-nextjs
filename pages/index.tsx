@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import HeroSection from "../components/HeroSection";
-import ProjectSection from "../components/ProjectSection";
-import AboutSection from "../components/AboutSection";
-import ScrollToTop from "../components/ScrollToTop";
+import HeroSection from "../components/HeroSection/HeroSection";
+import ProjectSection from "../components/ProjectSection/ProjectSection";
+import AboutSection from "../components/AboutSection/AboutSection";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { useWindowYOffset } from "../hooks/useWindowYOffset";
 
 const Home: NextPage = () => {

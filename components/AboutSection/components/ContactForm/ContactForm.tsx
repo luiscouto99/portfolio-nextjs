@@ -4,12 +4,12 @@ import emailjs from '@emailjs/browser';
 
 import styled from 'styled-components';
 
-import name from '../public/icons/name.png';
-import email from '../public/icons/email.png';
-import message from '../public/icons/message.png';
-import useAutosizeTextArea from '../hooks/useAutosizeTextArea';
-import { useWindowWidth } from '../hooks/useWindowWidth';
-import { useWindowYOffset } from '../hooks/useWindowYOffset';
+import name from '../../../../public/icons/name.png';
+import email from '../../../../public/icons/email.png';
+import message from '../../../../public/icons/message.png';
+import useAutosizeTextArea from '../../../../hooks/useAutosizeTextArea';
+import { useWindowWidth } from '../../../../hooks/useWindowWidth';
+import { useWindowYOffset } from '../../../../hooks/useWindowYOffset';
 
 type FormContainerProps = {
     textAreaHeight: any;
@@ -179,7 +179,7 @@ const ThanksContainer = styled.div`
 `;
 
 const Thanks = styled.p`
-text-align: center;
+    text-align: center;
 `;
 
 const ContactForm = () => {
@@ -209,30 +209,53 @@ const ContactForm = () => {
                 console.log(result.text);
             }, (error: any) => {
                 console.log(error.text);
-            });
+            }
+            );
     };
 
     return (
         <>
             {isThanksRendered ? (
                 <ThanksContainer>
-                    <Thanks>Thank you for reaching out to me. I will get back to you as soon as possible : &#41;</Thanks>
+                    <Thanks data-testid='form-thanks'>Thank you for reaching out. I will get back to you as soon as possible : &#41;</Thanks>
                 </ThanksContainer>
             ) : (
-                <FormContainer textAreaHeight={textAreaRef?.current?.offsetHeight} ref={form} onSubmit={sendEmail} pageYOffset={pageYOffset} screenWidth={screenWidth}>
+                <FormContainer
+                    textAreaHeight={textAreaRef?.current?.offsetHeight}
+                    ref={form}
+                    onSubmit={sendEmail}
+                    pageYOffset={pageYOffset}
+                    screenWidth={screenWidth}
+                    data-testid='form-submit'
+                >
                     <Title>Contact Me</Title>
                     <Label htmlFor='name' >
                         <ImageWrapper>
                             <Image src={name} alt='name icon' />
                         </ImageWrapper>
-                        <Input type="text" placeholder='Full Name' name="user_name" autoComplete="off" required />
+                        <Input
+                            type="text"
+                            placeholder='Full Name'
+                            name="user_name"
+                            autoComplete="off"
+                            required
+                            data-testid='form-name'
+                        />
                     </Label>
 
                     <Label htmlFor='email'>
                         <ImageWrapper>
                             <Image src={email} alt='name icon' />
                         </ImageWrapper>
-                        <Input type="email" placeholder='example@email.com' name="user_email" autoComplete="off" required />
+                        <Input
+                            type="email"
+                            placeholder='example@email.com'
+                            name="user_email"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            autoComplete="off"
+                            required
+                            data-testid='form-email'
+                        />
                     </Label>
 
                     <Label htmlFor='message'>
@@ -246,11 +269,17 @@ const ContactForm = () => {
                             rows={1}
                             name='message'
                             value={messageInput}
+                            minLength={30}
                             required
+                            data-testid='form-message'
                         />
                     </Label>
 
-                    <SubmitButton type="submit" value='Submit' />
+                    <SubmitButton
+                        type="submit"
+                        value='Submit'
+                        data-testid='form-button'
+                    />
                 </FormContainer>
             )}
         </>
