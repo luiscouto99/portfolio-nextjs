@@ -143,6 +143,7 @@ const HeroSection = () => {
           src={portrait}
           alt="portrait of myself"
           layout="responsive"
+          priority
         />
       </HeroPortrait>
     </Hero>
