@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
 import PageLoader from '../components/PageLoader';
 import { useState } from 'react';
+import GoogleAnalytics from '../components/GoogleAnalytics';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       {isLoading && <PageLoader loader={loader} layout={layout} />}
       <Layout isLoading={layoutLoading}>
+        <GoogleAnalytics />
         <Component {...pageProps} />
       </Layout>
     </>
