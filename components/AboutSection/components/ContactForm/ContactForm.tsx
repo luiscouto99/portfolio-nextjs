@@ -10,9 +10,10 @@ import message from "../../../../public/icons/message.png";
 import useAutosizeTextArea from "../../../../hooks/useAutosizeTextArea";
 import { useWindowWidth } from "../../../../hooks/useWindowWidth";
 import { useWindowYOffset } from "../../../../hooks/useWindowYOffset/useWindowYOffset";
+import { FormSubmissionType } from "../../../../types/form";
 
 type FormContainerProps = {
-	textAreaHeight: number;
+	textAreaHeight: number | undefined;
 	screenWidth: number;
 	pageYOffset: number;
 };
@@ -40,10 +41,10 @@ const FormContainer = styled.form<FormContainerProps>`
 	}
 
 	& label:last-of-type {
-		align-items: ${(props) => (props.textAreaHeight > 43 ? "flex-start" : "center")};
+		align-items: ${(props) => (props.textAreaHeight !== undefined && props.textAreaHeight > 43 ? "flex-start" : "center")};
 
 		& div:first-child {
-			margin-top: ${(props) => (props.textAreaHeight > 43 ? "17px" : "0px")};
+			margin-top: ${(props) => (props.textAreaHeight !== undefined && props.textAreaHeight > 43 ? "17px" : "0px")};
 		}
 	}
 
@@ -151,7 +152,7 @@ const SubmitButton = styled.input`
 	}
 `;
 
-const ThanksContainer = styled.div`
+const ResultContainer = styled.div`
 	margin: 280px 0 80px;
 	padding: 32px 128px;
 	border-radius: 12px;
@@ -175,13 +176,20 @@ const ThanksContainer = styled.div`
 	}
 `;
 
-const Thanks = styled.p`
+const Result = styled.p`
 	text-align: center;
+	line-height: 1.8;
+`;
+
+const ResultSpan = styled.span`
+	text-decoration: underline;
+	cursor: pointer;
 `;
 
 const ContactForm = () => {
 	const [messageInput, setMessageInput] = useState("");
 	const [isThanksRendered, setThanksRendered] = useState(false);
+	const [isTryAgainRendered, setTryAgainRendered] = useState(false);
 	const pageYOffset = useWindowYOffset();
 	const screenWidth = useWindowWidth();
 
@@ -190,10 +198,8 @@ const ContactForm = () => {
 
 	useAutosizeTextArea(textAreaRef.current, messageInput);
 
-	const sendEmail = (event: any) => {
+	const sendEmail = (event: React.FormEvent) => {
 		event.preventDefault();
-
-		setThanksRendered(true);
 
 		const email = {
 			name: form.current.user_name.value,
@@ -202,11 +208,13 @@ const ContactForm = () => {
 		};
 
 		emailjs.send("service_mqqjzhj", "template_yascyt3", email, "vxsbnr4XFI-SFNKvG").then(
-			(result: any) => {
-				console.log(result.text);
+			(result: FormSubmissionType) => {
+				console.log("result", result);
+				setThanksRendered(true);
 			},
-			(error: any) => {
-				console.log(error.text);
+			(error: FormSubmissionType) => {
+				console.log("error", error);
+				setTryAgainRendered(true);
 			}
 		);
 	};
@@ -214,9 +222,15 @@ const ContactForm = () => {
 	return (
 		<>
 			{isThanksRendered ? (
-				<ThanksContainer>
-					<Thanks data-testid="form-thanks">Thank you for reaching out. I will get back to you as soon as possible : &#41;</Thanks>
-				</ThanksContainer>
+				<ResultContainer>
+					<Result data-testid="form-thanks">Thank you for reaching out. I will get back to you as soon as possible : &#41;</Result>
+				</ResultContainer>
+			) : isTryAgainRendered ? (
+				<ResultContainer>
+					<Result>
+						It seems like there has been an issue while sending your message. Would you like to <ResultSpan onClick={() => setTryAgainRendered(false)}>try again</ResultSpan>?
+					</Result>
+				</ResultContainer>
 			) : (
 				<FormContainer textAreaHeight={textAreaRef?.current?.offsetHeight} ref={form} onSubmit={sendEmail} pageYOffset={pageYOffset} screenWidth={screenWidth} data-testid="form-submit">
 					<Title>Contact Me</Title>
