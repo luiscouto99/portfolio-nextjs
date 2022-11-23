@@ -23,20 +23,20 @@ const EasterEgg = () => {
         p5.translate(p5.width, 0);
         p5.scale(-1, 1);
 
-        let gridSize = p5.int(p5.map(0, p5.width, 0, p5.height, p5.width));
+        const gridSize = p5.int(p5.map(0, p5.width, 0, p5.height, p5.width));
         let offSet = Math.floor(gridSize / 100);
 
         if (offSet < 8) {
-            offSet = 8
-        };
+            offSet = 8;
+        }
 
         video.loadPixels();
         
         for (let y = 0; y < p5.height; y += offSet) {
             for (let x = 0; x < p5.width; x += offSet) {
-                let index = (y * p5.width + x) * 4;
-                let r = video.pixels[index];
-                let circleSize = p5.map(r, 0, 255, offSet, 2);
+                const index = (y * p5.width + x) * 4;
+                const r = video.pixels[index];
+                const circleSize = p5.map(r, 0, 255, offSet, 2);
                 p5.fill(0);
                 p5.noStroke();
                 p5.circle(x + offSet / 2, y + offSet / 2, circleSize);

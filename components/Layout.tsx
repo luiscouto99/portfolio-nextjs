@@ -28,7 +28,7 @@ const Main = styled.main`
   flex-direction: column;
 `;
 
-const Layout = ({ children, isLoading }: { children: any, isLoading: boolean }) => {
+const Layout = ({ children, isLoading }: { children: React.ReactNode, isLoading: boolean }) => {
   const [easterEgg, setEasterEgg] = useState(false);
   const screenWidth = useWindowWidth();
 
