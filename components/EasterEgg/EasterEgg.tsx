@@ -2,6 +2,7 @@ import React from 'react';
 import Sketch from 'react-p5';
 import p5Types from 'p5';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let video: any;
 const EasterEgg = () => {
   const setup = (p5: p5Types, canvasParentRef: Element) => {

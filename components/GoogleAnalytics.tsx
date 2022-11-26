@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import Script from 'next/script';
 
@@ -15,7 +15,7 @@ const GoogleAnalytics = () => {
                 `}
             </Script>
         </>
-    )
-}
+    );
+};
 
-export default GoogleAnalytics
+export default GoogleAnalytics;
