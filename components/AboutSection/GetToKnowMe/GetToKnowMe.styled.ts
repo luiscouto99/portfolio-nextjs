@@ -1,12 +1,7 @@
-import React from 'react'
-import Image from "next/image";
+import styled from 'styled-components';
 
-import styled from 'styled-components'
-import { useWindowWidth } from '../../../hooks/useWindowWidth';
-import illustrationM from "../../../public/images/illustrationM.jpg";
-
-const KnowMeContainer = styled.div`
-position: relative;
+export const KnowMeContainer = styled.div`
+  position: relative;
   margin: 360px 60px;
   display: flex;
   flex-direction: column;
@@ -35,7 +30,7 @@ position: relative;
   }
 `;
 
-const Title = styled.h2`
+export const Title = styled.h2`
   display: inline-flex;
   font-size: 80px;
   font-weight: 600;
@@ -75,41 +70,16 @@ type ImageWrapperProps = {
   handleScroll: boolean;
   screenWidth: number;
 };
-const ImageWrapper = styled.div<ImageWrapperProps>`
+export const ImageWrapper = styled.div<ImageWrapperProps>`
   position: absolute;
   top: ${(props) => {
     if (props.screenWidth <= 500) {
       return '270px';
     }
-    return props.pageYOffset >= 2730 ? '375px' : '90%'
+    return props.pageYOffset >= 2730 ? '375px' : '90%';
   }};
   transition: 1s ease-in-out;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
 `;
-
-const GetToKnowMe = ({ pageYOffset }: { pageYOffset: number }) => {
-  const screenWidth = useWindowWidth();
-  const handleScroll = (minY: number) => (pageYOffset >= minY ? true : false);
-
-  return (
-    <KnowMeContainer>
-      <Title>
-        Get to <br /> know me
-      </Title>
-      <ImageWrapper
-        screenWidth={screenWidth}
-        pageYOffset={pageYOffset}
-        handleScroll={handleScroll(screenWidth > 768 ? 3000 : 2600)}
-      >
-        <Image src={illustrationM} alt="illustration of myself" />
-      </ImageWrapper>
-      <Title>
-        — and reach <br /> out to me!
-      </Title>
-    </KnowMeContainer>
-  )
-}
-
-export default GetToKnowMe

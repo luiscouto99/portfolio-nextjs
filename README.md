@@ -10,5 +10,6 @@ This portfolio was developed with Reacts Next.js framework and designed in Figma
 - Next.js
 - P5.js (WebGL)
 - Styled-Components
+- ESLint + Prettier
 - Responsiveness (fit for mobile, tablet and desktop)
 - Figma (design)

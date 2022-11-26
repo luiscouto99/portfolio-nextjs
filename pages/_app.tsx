@@ -1,7 +1,7 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import Layout from '../components/Layout'
-import PageLoader from '../components/PageLoader';
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import Layout from '../components/Layout/Layout';
+import PageLoader from '../components/PageLoader/PageLoader';
 import { useState } from 'react';
 import GoogleAnalytics from '../components/GoogleAnalytics';
 
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </Layout>
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
