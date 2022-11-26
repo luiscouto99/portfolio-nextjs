@@ -1,4 +1,4 @@
 export type FormSubmissionType = {
-    status: number;
-    text: string;
-}
+  status: number;
+  text: string;
+};
